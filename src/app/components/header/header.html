@@ -1,0 +1,210 @@
+<!-- header area start -->
+<header class="tp-header-area p-relative">
+    <div class="tp-header-top d-none d-xl-block fix">
+        <div class="container container-large">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="tp-header-top-info">
+                        <a href="https://www.google.com/maps" target="_blank"><span><i
+                                    class="fa-sharp fa-solid fa-location-dot"></i></span>Colombia</a>
+                        <a href="mailto:needhelp@company.com"><span><i
+                                    class="fa-solid fa-envelope"></i></span>info@bmpglobalcorp.com</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="tp-header-top-right d-flex justify-content-end">
+                        <div class="tp-header-top-right-color d-flex align-items-center">
+                            <p>Síguenos:</p>
+                            <div class="tp-header-top-social">
+                                <a href="index.html#"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="index.html#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="index.html#"><i class="fa-brands fa-tiktok"></i></a>
+                                <a href="index.html#"><i class="fa-brands fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tp-header-main-sticky tp-header-main p-relative">
+        <div class="container container-large">
+            <div class="row align-items-center">
+                <div class="col-lg-2 col-md-3 col-6">
+                    <div class="tp-header-logo">
+                        <a href="index.html">
+                            <!-- <img src="assets/img/logo/logo.png" alt=""> -->
+                            <img src="assets/img/logo/logo-white.png" alt="" style="width: 100px; margin-left: 60px;">
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 d-none d-lg-block">
+                    <div class="tp-header-main-menu">
+                        <div class="tp-main-menu d-none d-xl-block">
+                            <nav class="tp-main-menu-content">
+                                <ul>
+                                    <li class="has-dropdown">
+                                        <a href="index.html">{{ 'MENU.HOME' | translate }}</a>
+
+                                    </li>
+                                    <!-- <li class="has-dropdown"><a href="index.html#">Páginas</a>
+                                    <ul class="submenu">
+                                       <li><a href="about.html">Nosotros</a></li>
+                                       <li><a href="history.html">Historia</a></li>
+                                       <li><a href="pricing.html">Precios</a></li>
+                                       <li><a href="testimonial.html">Testimonios</a></li>
+                                       <li><a href="team.html">Equipo</a></li>
+                                       <li><a href="team-details.html">Detalles del Equipo</a></li>
+                                       <li><a href="error.html">Error</a></li>
+                                    </ul>
+                                 </li> -->
+                                    <li class="has-dropdown">
+                                        <a href="#">{{ 'MENU.SERVICES' | translate }}</a>
+                                        <ul class="submenu">
+                                            <li><a href="#">Servicio</a></li>
+                                            <li><a href="#">Detalles del Servicio</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="#">{{ 'MENU.PORTFOLIO' | translate }}</a>
+                                        <ul class="submenu">
+                                            <li><a href="#">Portafolio</a></li>
+                                            <li><a href="#">Detalles del Portafolio</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- <li class="has-dropdown">
+                                    <a href="shop.html">Tienda</a>
+                                    <ul class="submenu">
+                                       <li><a href="shop.html">Tienda</a></li>
+                                       <li><a href="shop-details.html">Detalles Tienda</a></li>
+                                       <li><a href="cart.html">Carrito</a></li>
+                                       <li><a href="pagar.html">Pagar</a></li>
+                                    </ul>
+                                 </li> -->
+                                    <!-- <li class="has-dropdown"><a href="blog.html">Blog</a>
+                                    <ul class="submenu">
+                                       <li><a href="blog.html">Blog</a></li>
+                                       <li><a href="blog-sidebar.html">Blog Lateral</a></li>
+                                       <li><a href="blog-details.html">Detalles Blog</a></li>
+                                    </ul>
+                                 </li> -->
+                                    <li><a href="#">{{ 'MENU.CONTACT' | translate }}</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-9 col-6">
+                    <div class="tp-header-lang-selector desktop-only d-none d-lg-block" style="margin-right: 15px;">
+                        <div class="lang-dropdown" [class.open]="isLangOpen">
+
+                            <button (click)="toggleLang($event)">
+                                <img [src]="currentFlag" style="width: 20px; height: 14px; margin-right: 6px;">
+                                <span>{{ currentLang.toUpperCase() }}</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+
+                            <div class="lang-options">
+                                <a class="lang-option" (click)="changeLang('es')">
+                                    🇨🇴 Español
+                                </a>
+
+                                <a class="lang-option" (click)="changeLang('en')">
+                                    🇺🇸 English
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<header class="tp-header-area p-relative tp-int-menu tp-header-sticky-cloned">
+    <div class="tp-header-main-sticky tp-header-main p-relative">
+        <div class="container container-large">
+            <div class="row align-items-center">
+                <div class="col-lg-2 col-md-3 col-6">
+                    <div class="tp-header-logo">
+                        <a href="index.html">
+                            <!-- <img src="assets/img/logo/logo.png" alt=""> -->
+                            <img src="assets/img/logo/logo-white.png" alt="" style="width: 100px; margin-left: 60px;">
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 d-none d-lg-block">
+                    <div class="tp-header-main-menu">
+                        <div class="tp-main-menu d-none d-xl-block">
+                            <nav class="tp-main-menu-content">
+                                <ul>
+                                    <li class="has-dropdown">
+                                        <a href="index.html">{{ 'MENU.HOME' | translate }}</a>
+
+                                    </li>
+                                    
+                                    <li class="has-dropdown">
+                                        <a href="service.html">{{ 'MENU.SERVICES' | translate }}</a>
+                                        <ul class="submenu">
+                                            <li><a href="service.html">Servicio</a></li>
+                                            <li><a href="service-details.html">Detalles del Servicio</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="portfolio.html">{{ 'MENU.PORTFOLIO' | translate }}</a>
+                                        <ul class="submenu">
+                                            <li><a href="portfolio.html">Portafolio</a></li>
+                                            <li><a href="portfolio-details.html">Detalles del Portafolio</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- <li class="has-dropdown">
+                                    <a href="shop.html">Tienda</a>
+                                    <ul class="submenu">
+                                       <li><a href="shop.html">Tienda</a></li>
+                                       <li><a href="shop-details.html">Detalles Tienda</a></li>
+                                       <li><a href="cart.html">Carrito</a></li>
+                                       <li><a href="pagar.html">Pagar</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="has-dropdown"><a href="blog.html">Blog</a>
+                                    <ul class="submenu">
+                                       <li><a href="blog.html">Blog</a></li>
+                                       <li><a href="blog-sidebar.html">Blog Lateral</a></li>
+                                       <li><a href="blog-details.html">Detalles Blog</a></li>
+                                    </ul>
+                                 </li> -->
+                                    <li><a href="contact.html">{{ 'MENU.CONTACT' | translate }}</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-9 col-6">
+                    <div class="tp-header-lang-selector desktop-only d-none d-lg-block" style="margin-right: 15px;">
+                        <div class="lang-dropdown" [class.open]="isLangOpen">
+
+                            <button (click)="toggleLang($event)">
+                                <img [src]="currentFlag" style="width: 20px; height: 14px; margin-right: 6px;">
+                                <span>{{ currentLang.toUpperCase() }}</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+
+                            <div class="lang-options">
+                                <a class="lang-option" (click)="changeLang('es')">
+                                    🇨🇴 Español
+                                </a>
+
+                                <a class="lang-option" (click)="changeLang('en')">
+                                    🇺🇸 English
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
