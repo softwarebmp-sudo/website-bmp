@@ -1,9 +1,8 @@
-import { Component, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { Component, signal, AfterViewInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
 import { ScriptLoaderService } from './services/script-loader.service';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,29 +11,22 @@ import { filter } from 'rxjs/operators';
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
+export class App implements AfterViewInit {
   protected readonly title = signal('bmpsite');
-   isSearchOpen = false;
+  isSearchOpen = false;
   isCartOpen = false;
   isOffcanvasOpen = false;
 
- 
-  constructor(private scriptLoader: ScriptLoaderService,
-    private router: Router
-  ) {}
-async ngAfterViewInit() {
-    // Esperamos a que el router haya terminado de cargar para iniciar la carga de los scripts
-    this.router.events.pipe(
-      filter(e => e instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.loadScripts();
-    });
+  constructor(private scriptLoader: ScriptLoaderService) {}
+
+  async ngAfterViewInit() {
+    await this.loadVendorScripts();
   }
 
-  async loadScripts() {
+  async loadVendorScripts() {
     try {
       await this.scriptLoader.loadAll([
-        {src: 'assets/js/vendor/jquery.js', attr: { defer: 'true' }},
+        { src: 'assets/js/vendor/jquery.js', attr: { defer: 'true' } },
         { src: 'assets/js/bootstrap-bundle.js', attr: { defer: 'true' } },
         { src: 'assets/js/three.js', attr: { defer: 'true' } },
         { src: 'assets/js/gsap.js', attr: { defer: 'true' } },
@@ -49,18 +41,16 @@ async ngAfterViewInit() {
         { src: 'assets/js/nice-select.js', attr: { defer: 'true' } },
         { src: 'assets/js/countdown.js', attr: { defer: 'true' } },
         { src: 'assets/js/wow.js', attr: { defer: 'true' } },
-        { src: 'assets/js/ajax-form.js', attr: { defer: 'true' } },
-        { src: 'assets/js/main.js', attr: { defer: 'true' } },
-/*         { src: 'assets/js/language-switcher.js', attr: { defer: 'true' } }
- */      ]);
+        { src: 'assets/js/ajax-form.js', attr: { defer: 'true' } }
+      ]);
 
-      // Inicialización de código adicional
       (window as any).SVGInject?.(document.querySelectorAll('img.injectable'));
     } catch (err) {
       console.error('Error cargando scripts', err);
     }
   }
-   openSearch() {
+
+  openSearch() {
     this.isSearchOpen = true;
     this.isCartOpen = false;
     this.isOffcanvasOpen = false;
@@ -83,6 +73,7 @@ async ngAfterViewInit() {
     this.isCartOpen = false;
     this.isOffcanvasOpen = false;
   }
+
   closeSearch() {
     this.isSearchOpen = false;
   }

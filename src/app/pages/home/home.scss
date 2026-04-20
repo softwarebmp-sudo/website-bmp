@@ -5,3 +5,44 @@
 .home-page {
   min-height: 60vh;
 }
+
+.tp-hover-distort-img {
+  display: block !important;
+  opacity: 1 !important;
+  position: relative !important;
+}
+.tp-hover-distort-img {
+  display: block !important;
+  opacity: 1 !important;
+  position: relative !important;
+}
+.canvas-slider {
+  display: block;
+}
+#showcase-slider-wrappper {
+  position: relative;
+  background-image: url('/assets/img/hero/hero-bg-1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#showcase-slider-wrappper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.port-showcase-slider-spaces,
+.port-showcase-slider-wrap,
+#showcase-slider {
+  position: relative;
+  z-index: 2;
+}
+#showcase-slider-wrappper,
+#showcase-slider,
+.swiper-slide {
+  min-height: 800px;
+}
