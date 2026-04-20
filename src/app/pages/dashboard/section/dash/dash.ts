@@ -83,7 +83,7 @@ export class Dash implements OnInit, OnDestroy {
   async loadBlogCount(): Promise<void> {
     try {
       this.loadingBlog = true;
-      await this.realtimeBlogService.loadPosts();
+      await this.realtimeBlogService.loadBlog();
       this.totalBlog = this.realtimeBlogService.blogList.length;
     } catch (error) {
       console.error('Error cargando blog:', error);

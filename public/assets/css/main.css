@@ -1,13 +1,4 @@
 @charset "UTF-8";
-/*-----------------------------------------------------------------------------------
-
-    Template Name: Konkit – Construction HTML Template
-    Author: AQLOVA - Portfolio
-    Support: https://help.themepure.net/support/
-    Description: Konkit – Construction HTML Template
-    Version: 1.0
-
------------------------------------------------------------------------------------
 
 /************ TABLE OF CONTENTS ***************
 
@@ -92,6 +83,7 @@
 /*----------------------------------------*/
 /*  1.1 Theme Default
 /*----------------------------------------*/
+@import 'quill/dist/quill.snow.css';
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 .product__thumb img, .product__details-thumb-nav .nav-link::after, .product__details-tab-nav .tp-tab-line, .tp-project-tab-button button::after, .tp-offer-item, .mean-container .mean-nav ul li > a.mean-expand i, .tp-product-tab-2 .nav-tabs .nav-link .tp-product-tab-tooltip, .tp-tab-line, .back-to-top-wrapper, a,
 button,
