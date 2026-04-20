@@ -1,0 +1,172 @@
+.about-block {
+  padding: 110px 0;
+}
+
+.about-text {
+  font-size: 17px;
+  line-height: 1.9;
+  color: #5f677a;
+  max-width: 720px;
+  margin-bottom: 0;
+}
+
+.about-history {
+  overflow: hidden;
+}
+
+.about-mission,
+.about-vision {
+  background: #fff;
+}
+
+.leadership-section {
+  padding: 120px 0;
+  background: linear-gradient(180deg, #f8f9fc 0%, #ffffff 100%);
+}
+
+.leadership-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 50px 45px;
+  box-shadow: 0 20px 60px rgba(15, 35, 95, 0.08);
+  border: 1px solid rgba(10, 43, 110, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.leadership-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+  background: linear-gradient(180deg, #ff6a00 0%, #ff8c3a 100%);
+}
+
+.leadership-side {
+  padding-right: 20px;
+}
+
+.leadership-role {
+  color: #0c2d6b;
+  font-weight: 600;
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+.leadership-content p {
+  font-size: 16px;
+  line-height: 1.95;
+  color: #5f677a;
+  margin-bottom: 18px;
+}
+
+.leadership-content p:last-child {
+  margin-bottom: 0;
+}
+
+.leadership-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.leadership-badges span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(12, 45, 107, 0.08);
+  color: #0c2d6b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.team-clean-section {
+  background: #fff;
+}
+
+.tp-section-title {
+  font-size: 58px;
+  line-height: 1.05;
+  color: #0c2d6b;
+  margin-bottom: 20px;
+}
+
+.tp-section-title-pre {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ff6a00;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 18px;
+}
+
+.tp-section-title-pre::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translateY(-50%);
+  border: 1px solid #0c2d6b;
+  background: #fff;
+}
+
+@media (max-width: 991.98px) {
+  .about-block,
+  .leadership-section {
+    padding: 80px 0;
+  }
+
+  .tp-section-title {
+    font-size: 42px;
+  }
+
+  .leadership-card {
+    padding: 35px 25px;
+  }
+
+  .leadership-side {
+    margin-bottom: 30px;
+    padding-right: 0;
+  }
+
+  .about-text,
+  .leadership-content p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .tp-section-title {
+    font-size: 34px;
+  }
+
+  .tp-section-title-pre {
+    font-size: 14px;
+  }
+
+  .leadership-card {
+    border-radius: 18px;
+    padding: 28px 20px;
+  }
+
+  .leadership-badges {
+    gap: 8px;
+  }
+
+  .leadership-badges span {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+}

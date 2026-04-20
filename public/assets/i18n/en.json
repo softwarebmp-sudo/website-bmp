@@ -1,8 +1,11 @@
 {
   "MENU": {
     "HOME": "Home",
+    "ABOUT": "About",
     "SERVICES": "Services",
     "PORTFOLIO": "Portfolio",
-    "CONTACT": "Contact"
+    "CONTACT": "Contact",
+    "BLOG": "Blog"
+
   }
 }

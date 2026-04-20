@@ -1,0 +1,205 @@
+<div class="portfolio-admin">
+
+  <div class="page-header">
+    <div>
+      <h1>Gestión de proyectos</h1>
+      <p>Crea, edita y elimina proyectos del portafolio.</p>
+    </div>
+    <button type="button" class="add-btn" *ngIf="!showForm" routerLink="/admin/panel">
+          <i class="fa-solid fa-arrow-left"></i>
+      Volver
+    </button>
+    <button type="button" class="add-btn" *ngIf="!showForm" (click)="openCreateForm()">
+      <i class="fa-solid fa-plus"></i>
+      Agregar proyecto
+    </button>
+  </div>
+
+  <div class="admin-card" *ngIf="showForm">
+    <div class="form-header">
+      <h2>{{ editingId ? 'Editar proyecto' : 'Nuevo proyecto' }}</h2>
+
+      <button type="button" class="close-btn" (click)="closeForm()">
+        Cerrar
+      </button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="portfolio-form">
+      <div class="grid">
+        <div class="field">
+          <label>Nombre del proyecto</label>
+          <input type="text" formControlName="name" />
+        </div>
+
+        <div class="field">
+          <label>Ubicación</label>
+          <input type="text" formControlName="location" />
+        </div>
+
+        <div class="field">
+          <label>Tipo</label>
+          <select formControlName="type">
+            <option value="">Selecciona un tipo</option>
+            <option *ngFor="let type of typeOptions" [value]="type">
+              {{ type }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Categoría</label>
+          <input type="text" formControlName="category" />
+        </div>
+
+        <div class="field">
+          <label>Estado</label>
+          <select formControlName="status">
+            <option *ngFor="let status of statusOptions" [value]="status">
+              {{ status }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Año</label>
+          <input type="number" formControlName="year" />
+        </div>
+
+        <div class="field">
+          <label>Orden</label>
+          <input type="number" formControlName="orderIndex" />
+        </div>
+
+        <div class="field checkbox-field">
+          <label>
+            <input type="checkbox" formControlName="featured" />
+            Proyecto destacado
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Descripción</label>
+        <textarea rows="4" formControlName="description"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Problema del cliente</label>
+        <textarea rows="4" formControlName="clientProblem"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Solución implementada</label>
+        <textarea rows="4" formControlName="implementedSolution"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Resultado</label>
+        <textarea rows="4" formControlName="result"></textarea>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label>Imagen de portada</label>
+          <input type="file" accept="image/*" (change)="onCoverChange($event)" />
+
+          <div class="image-preview-block" *ngIf="getExistingCoverUrl() as coverUrl">
+            <p class="preview-title">Portada actual</p>
+            <div class="single-image-preview">
+              <img [src]="coverUrl" alt="Portada actual" />
+              <button type="button" class="danger small-btn" (click)="removeCurrentCover()">
+                Quitar portada
+              </button>
+            </div>
+          </div>
+
+          <div class="image-preview-block" *ngIf="selectedCoverFile">
+            <p class="preview-title">Nueva portada seleccionada</p>
+            <div class="file-chip">
+              <span>{{ selectedCoverFile.name }}</span>
+              <button type="button" class="danger-text" (click)="removeCoverSelection()">Quitar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Galería de fotos</label>
+          <input type="file" accept="image/*" multiple (change)="onGalleryChange($event)" />
+
+          <div class="image-preview-block" *ngIf="getExistingGalleryUrls().length">
+            <p class="preview-title">Galería actual</p>
+            <div class="gallery-preview">
+              <div class="gallery-item" *ngFor="let image of getExistingGalleryUrls()">
+                <img [src]="image.url" [alt]="image.name" />
+                <button
+                  type="button"
+                  class="danger small-btn"
+                  (click)="removeExistingGalleryFile(image.name)">
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="image-preview-block" *ngIf="selectedGalleryFiles.length">
+            <p class="preview-title">Nuevas imágenes seleccionadas</p>
+            <div class="file-list">
+              <div class="file-chip" *ngFor="let file of selectedGalleryFiles; let i = index">
+                <span>{{ file.name }}</span>
+                <button type="button" class="danger-text" (click)="removeSelectedGalleryFile(i)">
+                  Quitar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" [disabled]="saving">
+          {{ saving ? 'Guardando...' : (editingId ? 'Actualizar proyecto' : 'Crear proyecto') }}
+        </button>
+
+        <button type="button" class="secondary" (click)="closeForm()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="admin-card">
+    <h2>Listado de proyectos</h2>
+
+    <div *ngIf="loading">Cargando proyectos...</div>
+
+    <div class="projects-grid" *ngIf="!loading && portfolioList.length">
+      <div class="project-card" *ngFor="let item of portfolioList">
+        <div class="project-cover" *ngIf="getCoverUrl(item) as coverUrl">
+          <img [src]="coverUrl" [alt]="item.name" />
+        </div>
+
+        <div class="project-content">
+          <h3>{{ item.name }}</h3>
+          <p><strong>Ubicación:</strong> {{ item.location }}</p>
+          <p><strong>Tipo:</strong> {{ item.type }}</p>
+          <p><strong>Categoría:</strong> {{ item.category }}</p>
+          <p>
+            <strong>Estado:</strong>
+            <span class="badge" [ngClass]="item.status">
+              {{ item.status }}
+            </span>
+          </p>
+        </div>
+
+        <div class="project-actions">
+          <button type="button" (click)="editItem(item)">Editar</button>
+          <button type="button" class="danger" (click)="deleteItem(item.id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="!loading && !portfolioList.length">
+      <p>No hay proyectos creados todavía.</p>
+    </div>
+  </div>
+</div>

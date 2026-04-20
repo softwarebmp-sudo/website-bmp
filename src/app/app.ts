@@ -14,7 +14,11 @@ import { filter } from 'rxjs/operators';
 })
 export class App {
   protected readonly title = signal('bmpsite');
-  
+   isSearchOpen = false;
+  isCartOpen = false;
+  isOffcanvasOpen = false;
+
+ 
   constructor(private scriptLoader: ScriptLoaderService,
     private router: Router
   ) {}
@@ -56,5 +60,38 @@ async ngAfterViewInit() {
       console.error('Error cargando scripts', err);
     }
   }
-  
+   openSearch() {
+    this.isSearchOpen = true;
+    this.isCartOpen = false;
+    this.isOffcanvasOpen = false;
+  }
+
+  openCart() {
+    this.isCartOpen = true;
+    this.isSearchOpen = false;
+    this.isOffcanvasOpen = false;
+  }
+
+  openOffcanvas() {
+    this.isOffcanvasOpen = true;
+    this.isSearchOpen = false;
+    this.isCartOpen = false;
+  }
+
+  closeAll() {
+    this.isSearchOpen = false;
+    this.isCartOpen = false;
+    this.isOffcanvasOpen = false;
+  }
+  closeSearch() {
+    this.isSearchOpen = false;
+  }
+
+  closeCart() {
+    this.isCartOpen = false;
+  }
+
+  closeOffcanvas() {
+    this.isOffcanvasOpen = false;
+  }
 }

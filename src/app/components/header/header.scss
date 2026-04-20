@@ -46,3 +46,21 @@
 .lang-option:hover {
   background: #f3f4f6;
 }
+.search-area,
+.cartmini__area,
+.offcanvas__area,
+.body-overlay {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.search-area.open,
+.cartmini__area.open,
+.offcanvas__area.open,
+.body-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}

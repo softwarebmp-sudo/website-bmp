@@ -45,51 +45,32 @@
                             <nav class="tp-main-menu-content">
                                 <ul>
                                     <li class="has-dropdown">
-                                        <a href="index.html">{{ 'MENU.HOME' | translate }}</a>
+                                        <a routerLink="/home">{{ 'MENU.HOME' | translate }}</a>
 
                                     </li>
-                                    <!-- <li class="has-dropdown"><a href="index.html#">Páginas</a>
-                                    <ul class="submenu">
-                                       <li><a href="about.html">Nosotros</a></li>
-                                       <li><a href="history.html">Historia</a></li>
-                                       <li><a href="pricing.html">Precios</a></li>
-                                       <li><a href="testimonial.html">Testimonios</a></li>
-                                       <li><a href="team.html">Equipo</a></li>
-                                       <li><a href="team-details.html">Detalles del Equipo</a></li>
-                                       <li><a href="error.html">Error</a></li>
-                                    </ul>
-                                 </li> -->
                                     <li class="has-dropdown">
-                                        <a href="#">{{ 'MENU.SERVICES' | translate }}</a>
+                                        <a routerLink="/about">{{ 'MENU.ABOUT' | translate }}</a>
+
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a routerLink="/services">{{ 'MENU.SERVICES' | translate }}</a>
                                         <ul class="submenu">
                                             <li><a href="#">Servicio</a></li>
                                             <li><a href="#">Detalles del Servicio</a></li>
                                         </ul>
                                     </li>
                                     <li class="has-dropdown">
-                                        <a href="#">{{ 'MENU.PORTFOLIO' | translate }}</a>
+                                        <a routerLink="/portfolio">{{ 'MENU.PORTFOLIO' | translate }}</a>
                                         <ul class="submenu">
                                             <li><a href="#">Portafolio</a></li>
                                             <li><a href="#">Detalles del Portafolio</a></li>
                                         </ul>
                                     </li>
-                                    <!-- <li class="has-dropdown">
-                                    <a href="shop.html">Tienda</a>
-                                    <ul class="submenu">
-                                       <li><a href="shop.html">Tienda</a></li>
-                                       <li><a href="shop-details.html">Detalles Tienda</a></li>
-                                       <li><a href="cart.html">Carrito</a></li>
-                                       <li><a href="pagar.html">Pagar</a></li>
-                                    </ul>
-                                 </li> -->
-                                    <!-- <li class="has-dropdown"><a href="blog.html">Blog</a>
-                                    <ul class="submenu">
-                                       <li><a href="blog.html">Blog</a></li>
-                                       <li><a href="blog-sidebar.html">Blog Lateral</a></li>
-                                       <li><a href="blog-details.html">Detalles Blog</a></li>
-                                    </ul>
-                                 </li> -->
-                                    <li><a href="#">{{ 'MENU.CONTACT' | translate }}</a></li>
+                                    <li class="has-dropdown">
+                                        <a routerLink="/blog">{{ 'MENU.BLOG' | translate }}</a>
+
+                                    </li>
+                                    <li><a routerLink="/contact">{{ 'MENU.CONTACT' | translate }}</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -97,22 +78,63 @@
                 </div>
                 <div class="col-lg-3 col-md-9 col-6">
                     <div class="tp-header-lang-selector desktop-only d-none d-lg-block" style="margin-right: 15px;">
-                        <div class="lang-dropdown" [class.open]="isLangOpen">
+                        <div class="tp-header-contact d-xl-flex align-items-center">
 
-                            <button (click)="toggleLang($event)">
-                                <img [src]="currentFlag" style="width: 20px; height: 14px; margin-right: 6px;">
-                                <span>{{ currentLang.toUpperCase() }}</span>
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
+                            <div class="lang-dropdown" [class.open]="isLangOpen">
+                                <button type="button" (click)="toggleLang($event)">
+                                    <img [src]="currentFlag" alt="lang"
+                                        style="width: 20px; height: 14px; margin-right: 6px; border-radius: 2px;">
+                                    <span>{{ currentLang.toUpperCase() }}</span>
+                                    <i class="fa-solid fa-chevron-down" style="margin-left: 6px; font-size: 10px;"></i>
+                                </button>
 
-                            <div class="lang-options">
-                                <a class="lang-option" (click)="changeLang('es')">
-                                    🇨🇴 Español
+                                <div class="lang-options">
+                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('es')">
+                                        <img src="https://flagcdn.com/w20/co.png" alt="ES"
+                                            style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
+                                        <span>Español</span>
+                                    </a>
+
+                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('en')">
+                                        <img src="https://flagcdn.com/w20/us.png" alt="EN"
+                                            style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
+                                        <span>English</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="tp-header-contact-icon d-none d-xxl-block">
+                                <button type="button" class="icon-btn" (click)="openSearch()">
+                                    <i class="fa-sharp fa-regular fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+
+                            <div class="tp-header-contact-icon d-none d-xxl-block">
+                                <button type="button" class="icon-btn" [routerLink]="['/admin/login']">
+                                    <i class="fa-sharp fa-light fa-user"></i>
+                                </button>
+                            </div>
+
+                            <div class="tp-header-btn d-none d-xl-block">
+                                <a class="tp-btn tp-icon-style" routerLink="/contacto">
+                                    Cotizar
+                                    <span>
+                                        <svg class="qodef-svg--custom-arrow qodef-m-arrow"
+                                            xmlns="http://www.w3.org/2000/svg" width="14.2" height="14.2"
+                                            viewBox="0 0 14.2 14.2">
+                                            <g>
+                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                            </g>
+                                        </svg>
+                                    </span>
                                 </a>
+                            </div>
 
-                                <a class="lang-option" (click)="changeLang('en')">
-                                    🇺🇸 English
-                                </a>
+                            <div class="tp-header-hamburger d-xl-none">
+                                <button type="button" class="hamburger-btn" (click)="openOffcanvas()">
+                                    <span></span>
+                                    <span></span>
+                                </button>
                             </div>
 
                         </div>
@@ -129,9 +151,7 @@
                 <div class="col-lg-2 col-md-3 col-6">
                     <div class="tp-header-logo">
                         <a href="index.html">
-                            <!-- <img src="assets/img/logo/logo.png" alt=""> -->
                             <img src="assets/img/logo/logo-white.png" alt="" style="width: 100px; margin-left: 60px;">
-
                         </a>
                     </div>
                 </div>
@@ -144,7 +164,10 @@
                                         <a href="index.html">{{ 'MENU.HOME' | translate }}</a>
 
                                     </li>
-                                    
+                                    <li class="has-dropdown">
+                                        <a routerLink="about">{{ 'MENU.ABOUT' | translate }}</a>
+
+                                    </li>
                                     <li class="has-dropdown">
                                         <a href="service.html">{{ 'MENU.SERVICES' | translate }}</a>
                                         <ul class="submenu">
@@ -159,23 +182,12 @@
                                             <li><a href="portfolio-details.html">Detalles del Portafolio</a></li>
                                         </ul>
                                     </li>
-                                    <!-- <li class="has-dropdown">
-                                    <a href="shop.html">Tienda</a>
-                                    <ul class="submenu">
-                                       <li><a href="shop.html">Tienda</a></li>
-                                       <li><a href="shop-details.html">Detalles Tienda</a></li>
-                                       <li><a href="cart.html">Carrito</a></li>
-                                       <li><a href="pagar.html">Pagar</a></li>
-                                    </ul>
-                                 </li>
-                                 <li class="has-dropdown"><a href="blog.html">Blog</a>
-                                    <ul class="submenu">
-                                       <li><a href="blog.html">Blog</a></li>
-                                       <li><a href="blog-sidebar.html">Blog Lateral</a></li>
-                                       <li><a href="blog-details.html">Detalles Blog</a></li>
-                                    </ul>
-                                 </li> -->
-                                    <li><a href="contact.html">{{ 'MENU.CONTACT' | translate }}</a></li>
+
+                                    <li class="has-dropdown">
+                                        <a routerLink="blog">{{ 'MENU.BLOG' | translate }}</a>
+
+                                    </li>
+                                    <li><a>{{ 'MENU.CONTACT' | translate }}</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -183,22 +195,62 @@
                 </div>
                 <div class="col-lg-3 col-md-9 col-6">
                     <div class="tp-header-lang-selector desktop-only d-none d-lg-block" style="margin-right: 15px;">
-                        <div class="lang-dropdown" [class.open]="isLangOpen">
+                        <div class="tp-header-contact d-xl-flex align-items-center">
 
-                            <button (click)="toggleLang($event)">
-                                <img [src]="currentFlag" style="width: 20px; height: 14px; margin-right: 6px;">
-                                <span>{{ currentLang.toUpperCase() }}</span>
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
+                            <div class="lang-dropdown" [class.open]="isLangOpen">
+                                <button type="button" (click)="toggleLang($event)">
+                                    <img [src]="currentFlag" alt="lang"
+                                        style="width: 20px; height: 14px; margin-right: 6px; border-radius: 2px;">
+                                    <span>{{ currentLang.toUpperCase() }}</span>
+                                    <i class="fa-solid fa-chevron-down" style="margin-left: 6px; font-size: 10px;"></i>
+                                </button>
 
-                            <div class="lang-options">
-                                <a class="lang-option" (click)="changeLang('es')">
-                                    🇨🇴 Español
+                                <div class="lang-options">
+                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('es')">
+                                        <img src="https://flagcdn.com/w20/co.png" alt="ES"
+                                            style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
+                                        <span>Español</span>
+                                    </a>
+
+                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('en')">
+                                        <img src="https://flagcdn.com/w20/us.png" alt="EN"
+                                            style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
+                                        <span>English</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="tp-header-contact-icon d-none d-xxl-block">
+                                <button type="button" class="icon-btn" (click)="openSearch()">
+                                    <i class="fa-sharp fa-regular fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+
+                            <div class="tp-header-contact-icon d-none d-xxl-block">
+                                <button type="button" class="icon-btn" [routerLink]="['/admin/dashboard']">
+                                    <i class="fa-sharp fa-light fa-user"></i>
+                                </button>
+                            </div>
+                            <div class="tp-header-btn d-none d-xl-block">
+                                <a class="tp-btn tp-icon-style" routerLink="/contacto">
+                                    Cotizar
+                                    <span>
+                                        <svg class="qodef-svg--custom-arrow qodef-m-arrow"
+                                            xmlns="http://www.w3.org/2000/svg" width="14.2" height="14.2"
+                                            viewBox="0 0 14.2 14.2">
+                                            <g>
+                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                            </g>
+                                        </svg>
+                                    </span>
                                 </a>
+                            </div>
 
-                                <a class="lang-option" (click)="changeLang('en')">
-                                    🇺🇸 English
-                                </a>
+                            <div class="tp-header-hamburger d-xl-none">
+                                <button type="button" class="hamburger-btn" (click)="openOffcanvas()">
+                                    <span></span>
+                                    <span></span>
+                                </button>
                             </div>
 
                         </div>

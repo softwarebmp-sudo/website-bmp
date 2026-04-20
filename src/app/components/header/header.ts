@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, TranslatePipe],
+  imports: [CommonModule, TranslatePipe, RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
@@ -14,6 +15,11 @@ export class Header {
   closeDropdown() {
     this.isLangOpen = false;
   }
+  @Output() searchClick = new EventEmitter<void>();
+  @Output() cartClick = new EventEmitter<void>();
+  @Output() offcanvasClick = new EventEmitter<void>();
+
+ 
   isLangOpen = false;
   currentLang = 'es';
   currentFlag = 'https://flagcdn.com/w20/co.png';
@@ -43,5 +49,16 @@ export class Header {
     this.currentFlag = lang === 'es'
       ? 'https://flagcdn.com/w20/co.png'
       : 'https://flagcdn.com/w20/us.png';
+  }
+   openSearch() {
+    this.searchClick.emit();
+  }
+
+  openCart() {
+    this.cartClick.emit();
+  }
+
+  openOffcanvas() {
+    this.offcanvasClick.emit();
   }
 }
