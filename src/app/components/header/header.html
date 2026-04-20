@@ -33,9 +33,7 @@
                 <div class="col-lg-2 col-md-3 col-6">
                     <div class="tp-header-logo">
                         <a href="index.html">
-                            <!-- <img src="assets/img/logo/logo.png" alt=""> -->
-                            <img src="assets/img/logo/logo-white.png" alt="" style="width: 100px; margin-left: 60px;">
-
+                            <img src="assets/img/logo/logo.png" alt="" style="width: 100px; margin-left: 60px;">
                         </a>
                     </div>
                 </div>
@@ -55,16 +53,12 @@
                                     <li class="has-dropdown">
                                         <a routerLink="/services">{{ 'MENU.SERVICES' | translate }}</a>
                                         <ul class="submenu">
-                                            <li><a href="#">Servicio</a></li>
-                                            <li><a href="#">Detalles del Servicio</a></li>
+                                            <li><a routerLink="/services">Servicio</a></li>
                                         </ul>
                                     </li>
                                     <li class="has-dropdown">
                                         <a routerLink="/portfolio">{{ 'MENU.PORTFOLIO' | translate }}</a>
-                                        <ul class="submenu">
-                                            <li><a href="#">Portafolio</a></li>
-                                            <li><a href="#">Detalles del Portafolio</a></li>
-                                        </ul>
+                                        
                                     </li>
                                     <li class="has-dropdown">
                                         <a routerLink="/blog">{{ 'MENU.BLOG' | translate }}</a>
@@ -151,7 +145,7 @@
                 <div class="col-lg-2 col-md-3 col-6">
                     <div class="tp-header-logo">
                         <a href="index.html">
-                            <img src="assets/img/logo/logo-white.png" alt="" style="width: 100px; margin-left: 60px;">
+                            <img src="assets/img/logo/logo.png" alt="" style="width: 100px; margin-left: 60px;">
                         </a>
                     </div>
                 </div>
@@ -161,7 +155,7 @@
                             <nav class="tp-main-menu-content">
                                 <ul>
                                     <li class="has-dropdown">
-                                        <a href="index.html">{{ 'MENU.HOME' | translate }}</a>
+                                        <a routerLink="home">{{ 'MENU.HOME' | translate }}</a>
 
                                     </li>
                                     <li class="has-dropdown">
@@ -169,18 +163,14 @@
 
                                     </li>
                                     <li class="has-dropdown">
-                                        <a href="service.html">{{ 'MENU.SERVICES' | translate }}</a>
+                                        <a routerLink="service">{{ 'MENU.SERVICES' | translate }}</a>
                                         <ul class="submenu">
-                                            <li><a href="service.html">Servicio</a></li>
-                                            <li><a href="service-details.html">Detalles del Servicio</a></li>
+                                            <li><a routerLink="service">Servicio</a></li>
                                         </ul>
                                     </li>
                                     <li class="has-dropdown">
-                                        <a href="portfolio.html">{{ 'MENU.PORTFOLIO' | translate }}</a>
-                                        <ul class="submenu">
-                                            <li><a href="portfolio.html">Portafolio</a></li>
-                                            <li><a href="portfolio-details.html">Detalles del Portafolio</a></li>
-                                        </ul>
+                                        <a routerLink="portfolio">{{ 'MENU.PORTFOLIO' | translate }}</a>
+                                       
                                     </li>
 
                                     <li class="has-dropdown">
