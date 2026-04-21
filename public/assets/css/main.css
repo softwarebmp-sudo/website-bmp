@@ -6275,7 +6275,7 @@ blockquote img {
 }
 @media (max-width: 575px) {
   .tp-hero-title {
-    font-size: 54px;
+    font-size:30px;
     margin-bottom: 30px;
   }
 }

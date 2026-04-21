@@ -32,8 +32,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-2 col-md-3 col-6">
                     <div class="tp-header-logo">
-                        <a href="index.html">
-                            <img src="assets/img/logo/logo.png" alt="" style="width: 100px; margin-left: 60px;">
+                        <a routerLink="/home">
+                            <img src="assets/img/logo/logo.png" alt="" class="header-logo-img">
                         </a>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                                     </li>
                                     <li class="has-dropdown">
                                         <a routerLink="/portfolio">{{ 'MENU.PORTFOLIO' | translate }}</a>
-                                        
+
                                     </li>
                                     <li class="has-dropdown">
                                         <a routerLink="/blog">{{ 'MENU.BLOG' | translate }}</a>
@@ -71,67 +71,76 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-9 col-6">
-                    <div class="tp-header-lang-selector desktop-only d-none d-lg-block" style="margin-right: 15px;">
-                        <div class="tp-header-contact d-xl-flex align-items-center">
+                    <div class="d-flex justify-content-end align-items-center">
 
-                            <div class="lang-dropdown" [class.open]="isLangOpen">
-                                <button type="button" (click)="toggleLang($event)">
-                                    <img [src]="currentFlag" alt="lang"
-                                        style="width: 20px; height: 14px; margin-right: 6px; border-radius: 2px;">
-                                    <span>{{ currentLang.toUpperCase() }}</span>
-                                    <i class="fa-solid fa-chevron-down" style="margin-left: 6px; font-size: 10px;"></i>
-                                </button>
+                        <!-- desktop -->
+                        <div class="tp-header-lang-selector desktop-only d-none d-lg-block" style="margin-right: 15px;">
+                            <div class="tp-header-contact d-xl-flex align-items-center">
 
-                                <div class="lang-options">
-                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('es')">
-                                        <img src="https://flagcdn.com/w20/co.png" alt="ES"
-                                            style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
-                                        <span>Español</span>
-                                    </a>
+                                <div class="lang-dropdown" [class.open]="isLangOpen">
+                                    <button type="button" (click)="toggleLang($event)">
+                                        <img [src]="currentFlag" alt="lang"
+                                            style="width: 20px; height: 14px; margin-right: 6px; border-radius: 2px;">
+                                        <span>{{ currentLang.toUpperCase() }}</span>
+                                        <i class="fa-solid fa-chevron-down"
+                                            style="margin-left: 6px; font-size: 10px;"></i>
+                                    </button>
 
-                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('en')">
-                                        <img src="https://flagcdn.com/w20/us.png" alt="EN"
-                                            style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
-                                        <span>English</span>
+                                    <div class="lang-options">
+                                        <a class="lang-option" href="javascript:void(0)" (click)="changeLang('es')">
+                                            <img src="https://flagcdn.com/w20/co.png" alt="ES"
+                                                style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
+                                            <span>Español</span>
+                                        </a>
+
+                                        <a class="lang-option" href="javascript:void(0)" (click)="changeLang('en')">
+                                            <img src="https://flagcdn.com/w20/us.png" alt="EN"
+                                                style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
+                                            <span>English</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="tp-header-contact-icon d-none d-xxl-block">
+                                    <button type="button" class="icon-btn" (click)="openSearch()">
+                                        <i class="fa-sharp fa-regular fa-magnifying-glass"></i>
+                                    </button>
+                                </div>
+
+                                <div class="tp-header-contact-icon d-none d-xxl-block">
+                                    <button type="button" class="icon-btn" [routerLink]="['/admin/login']">
+                                        <i class="fa-sharp fa-light fa-user"></i>
+                                    </button>
+                                </div>
+
+                                <div class="tp-header-btn d-none d-xl-block">
+                                    <a class="tp-btn tp-icon-style" routerLink="/contact">
+                                        Cotizar
+                                        <span>
+                                            <svg class="qodef-svg--custom-arrow qodef-m-arrow"
+                                                xmlns="http://www.w3.org/2000/svg" width="14.2" height="14.2"
+                                                viewBox="0 0 14.2 14.2">
+                                                <g>
+                                                    <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                                    <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                                </g>
+                                            </svg>
+                                        </span>
                                     </a>
                                 </div>
-                            </div>
-                            <div class="tp-header-contact-icon d-none d-xxl-block">
-                                <button type="button" class="icon-btn" (click)="openSearch()">
-                                    <i class="fa-sharp fa-regular fa-magnifying-glass"></i>
-                                </button>
-                            </div>
 
-                            <div class="tp-header-contact-icon d-none d-xxl-block">
-                                <button type="button" class="icon-btn" [routerLink]="['/admin/login']">
-                                    <i class="fa-sharp fa-light fa-user"></i>
-                                </button>
                             </div>
-
-                            <div class="tp-header-btn d-none d-xl-block">
-                                <a class="tp-btn tp-icon-style" routerLink="/contact">
-                                    Cotizar
-                                    <span>
-                                        <svg class="qodef-svg--custom-arrow qodef-m-arrow"
-                                            xmlns="http://www.w3.org/2000/svg" width="14.2" height="14.2"
-                                            viewBox="0 0 14.2 14.2">
-                                            <g>
-                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
-                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
-                                            </g>
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
-
-                            <div class="tp-header-hamburger d-xl-none">
-                                <button type="button" class="hamburger-btn" (click)="openOffcanvas()">
-                                    <span></span>
-                                    <span></span>
-                                </button>
-                            </div>
-
                         </div>
+
+                        <!-- mobile -->
+                        <div class="tp-header-hamburger d-flex d-lg-none">
+                            <button type="button" class="hamburger-btn" (click)="openOffcanvas()">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -144,8 +153,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-2 col-md-3 col-6">
                     <div class="tp-header-logo">
-                        <a href="index.html">
-                            <img src="assets/img/logo/logo.png" alt="" style="width: 100px; margin-left: 60px;">
+                        <a routerLink="/home">
+                            <img src="assets/img/logo/logo.png" alt="" class="header-logo-img">
                         </a>
                     </div>
                 </div>
@@ -170,7 +179,7 @@
                                     </li>
                                     <li class="has-dropdown">
                                         <a routerLink="portfolio">{{ 'MENU.PORTFOLIO' | translate }}</a>
-                                       
+
                                     </li>
 
                                     <li class="has-dropdown">
@@ -184,69 +193,107 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-9 col-6">
-                    <div class="tp-header-lang-selector desktop-only d-none d-lg-block" style="margin-right: 15px;">
-                        <div class="tp-header-contact d-xl-flex align-items-center">
+                    <div class="d-flex justify-content-end align-items-center">
 
-                            <div class="lang-dropdown" [class.open]="isLangOpen">
-                                <button type="button" (click)="toggleLang($event)">
-                                    <img [src]="currentFlag" alt="lang"
-                                        style="width: 20px; height: 14px; margin-right: 6px; border-radius: 2px;">
-                                    <span>{{ currentLang.toUpperCase() }}</span>
-                                    <i class="fa-solid fa-chevron-down" style="margin-left: 6px; font-size: 10px;"></i>
-                                </button>
+                        <!-- Bloque desktop -->
+                        <div class="tp-header-lang-selector desktop-only d-none d-lg-block" style="margin-right: 15px;">
+                            <div class="tp-header-contact d-xl-flex align-items-center">
 
-                                <div class="lang-options">
-                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('es')">
-                                        <img src="https://flagcdn.com/w20/co.png" alt="ES"
-                                            style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
-                                        <span>Español</span>
-                                    </a>
+                                <div class="lang-dropdown" [class.open]="isLangOpen">
+                                    <button type="button" (click)="toggleLang($event)">
+                                        <img [src]="currentFlag" alt="lang"
+                                            style="width: 20px; height: 14px; margin-right: 6px; border-radius: 2px;">
+                                        <span>{{ currentLang.toUpperCase() }}</span>
+                                        <i class="fa-solid fa-chevron-down"
+                                            style="margin-left: 6px; font-size: 10px;"></i>
+                                    </button>
 
-                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('en')">
-                                        <img src="https://flagcdn.com/w20/us.png" alt="EN"
-                                            style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
-                                        <span>English</span>
+                                    <div class="lang-options">
+                                        <a class="lang-option" href="javascript:void(0)" (click)="changeLang('es')">
+                                            <img src="https://flagcdn.com/w20/co.png" alt="ES"
+                                                style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
+                                            <span>Español</span>
+                                        </a>
+
+                                        <a class="lang-option" href="javascript:void(0)" (click)="changeLang('en')">
+                                            <img src="https://flagcdn.com/w20/us.png" alt="EN"
+                                                style="width: 20px; height: 14px; margin-right: 10px; border-radius: 2px;">
+                                            <span>English</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="tp-header-contact-icon d-none d-xxl-block">
+                                    <button type="button" class="icon-btn" (click)="openSearch()">
+                                        <i class="fa-sharp fa-regular fa-magnifying-glass"></i>
+                                    </button>
+                                </div>
+
+                                <div class="tp-header-contact-icon d-none d-xxl-block">
+                                    <button type="button" class="icon-btn" [routerLink]="['/admin/login']">
+                                        <i class="fa-sharp fa-light fa-user"></i>
+                                    </button>
+                                </div>
+
+                                <div class="tp-header-btn d-none d-xl-block">
+                                    <a class="tp-btn tp-icon-style" routerLink="/contact">
+                                        Cotizar
+                                        <span>
+                                            <svg class="qodef-svg--custom-arrow qodef-m-arrow"
+                                                xmlns="http://www.w3.org/2000/svg" width="14.2" height="14.2"
+                                                viewBox="0 0 14.2 14.2">
+                                                <g>
+                                                    <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                                    <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                                </g>
+                                            </svg>
+                                        </span>
                                     </a>
                                 </div>
                             </div>
-                            <div class="tp-header-contact-icon d-none d-xxl-block">
-                                <button type="button" class="icon-btn" (click)="openSearch()">
-                                    <i class="fa-sharp fa-regular fa-magnifying-glass"></i>
-                                </button>
-                            </div>
-
-                            <div class="tp-header-contact-icon d-none d-xxl-block">
-                                <button type="button" class="icon-btn" [routerLink]="['/admin/dashboard']">
-                                    <i class="fa-sharp fa-light fa-user"></i>
-                                </button>
-                            </div>
-                            <div class="tp-header-btn d-none d-xl-block">
-                                <a class="tp-btn tp-icon-style" routerLink="/contact">
-                                    Cotizar
-                                    <span>
-                                        <svg class="qodef-svg--custom-arrow qodef-m-arrow"
-                                            xmlns="http://www.w3.org/2000/svg" width="14.2" height="14.2"
-                                            viewBox="0 0 14.2 14.2">
-                                            <g>
-                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
-                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
-                                            </g>
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
-
-                            <div class="tp-header-hamburger d-xl-none">
-                                <button type="button" class="hamburger-btn" (click)="openOffcanvas()">
-                                    <span></span>
-                                    <span></span>
-                                </button>
-                            </div>
-
                         </div>
+
+                        <!-- Botón mobile -->
+                        <div class="tp-header-hamburger d-flex d-lg-none">
+                            <button type="button" class="hamburger-btn" (click)="openOffcanvas()">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </header>
+<div class="offcanvas__area" [class.open]="isOffcanvasOpen">
+  <div class="offcanvas__wrapper">
+    <div class="offcanvas__top d-flex justify-content-between align-items-center">
+      <div class="offcanvas__logo">
+        <a routerLink="/home" (click)="closeOffcanvas()">
+          <img src="assets/img/logo/logo.png" alt="logo" style="width: 100px;">
+        </a>
+      </div>
+      <div class="offcanvas__close">
+        <button type="button" (click)="closeOffcanvas()">✕</button>
+      </div>
+    </div>
+
+    <div class="offcanvas__content">
+      <nav class="mobile-menu">
+        <ul>
+          <li><a routerLink="/home" (click)="closeOffcanvas()">Inicio</a></li>
+          <li><a routerLink="/about" (click)="closeOffcanvas()">Nosotros</a></li>
+          <li><a routerLink="/services" (click)="closeOffcanvas()">Servicios</a></li>
+          <li><a routerLink="/portfolio" (click)="closeOffcanvas()">Portafolio</a></li>
+          <li><a routerLink="/blog" (click)="closeOffcanvas()">Blog</a></li>
+          <li><a routerLink="/contact" (click)="closeOffcanvas()">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="body-overlay" [class.open]="isOffcanvasOpen" (click)="closeOffcanvas()"></div>

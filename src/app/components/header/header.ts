@@ -24,6 +24,8 @@ export class Header {
   currentLang = 'es';
   currentFlag = 'https://flagcdn.com/w20/co.png';
 
+  isOffcanvasOpen = false;
+
   constructor(private translate: TranslateService) {
     this.translate.setDefaultLang('es');
 
@@ -58,7 +60,13 @@ export class Header {
     this.cartClick.emit();
   }
 
-  openOffcanvas() {
-    this.offcanvasClick.emit();
-  }
+openOffcanvas() {
+  console.log('click hamburguesa');
+  this.isOffcanvasOpen = true;
+  this.offcanvasClick.emit();
+}
+
+closeOffcanvas() {
+  this.isOffcanvasOpen = false;
+}
 }
