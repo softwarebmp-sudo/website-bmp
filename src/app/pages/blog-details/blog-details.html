@@ -1,0 +1,256 @@
+<main>
+
+    <!-- postbox area start -->
+    <section class="tp-postbox-area pt-120 pb-90" *ngIf="!loadingBlog && blog; else loadingOrEmpty">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-8 col-xl-8 col-lg-8">
+                    <div class="tp-postbox-wrapper">
+                        <article class="tp-postbox-item mb-40">
+                            <div class="tp-postbox-thumb p-relative">
+                                <a>
+                                    <img src="{{getBlogCoverUrl(blog)}}" alt="">
+                                </a>
+                            </div>
+                            <div class="tp-postbox-content">
+                                <div class="tp-postbox-meta">
+                                    <span>By {{blog.author}} _ {{formatBlogDate(blog.created)}}</span>
+                                </div>
+                                <h3 class="tp-postbox-title">
+                                    <a>{{blog.title}}</a>
+                                </h3>
+                                <div class="tp-postbox-text" [innerHTML]="blog.content"></div>
+
+
+                                <div class="tp-postbox-share-wrapper">
+                                    <div class="row">
+                                        <div class="col-xl-7 col-lg-6 col-md-6">
+                                            <div class="tp-postbox-share-tags tagcloud">
+                                                <h4 class="tp-sidebar-widget-title-2">Tag:</h4>
+                                                <a>straming</a>
+                                                <a>network</a>
+                                                <a>mobile</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-5 col-lg-6 col-md-6">
+                                            <div class="tp-postbox-share-social text-md-end">
+                                                <div class="tp-footer-widget-social d-flex align-items-center">
+                                                    <h4 class="tp-sidebar-widget-title-2">share:</h4>
+                                                    <a><i class="fab fa-facebook-f"></i></a>
+                                                    <a><i class="fab fa-twitter"></i></a>
+                                                    <a><i class="fa-brands fa-instagram"></i></a>
+                                                    <a><i class="fa-brands fa-pinterest-p"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+
+
+                        <div class="tp-postbox-comment mb-60">
+                            <h3 class="tp-postbox-title">Comentarios</h3>
+                            <!--  <ul>
+                              <li>
+                                 <div class="tp-postbox-comment-box border-mr p-relative">
+                                    <div class="tp-postbox-comment-box-inner d-flex">
+                                       <div class="tp-postbox-comment-avater">
+                                          <img src="assets/img/blog/blog-sidebar/blog-details-4.jpg" alt="">
+                                       </div>
+                                       <div class="tp-postbox-comment-content">
+                                          <div class="tp-postbox-comment-author d-flex align-items-center">
+                                             <h5 class="tp-postbox-comment-name">Mithcel Adnan</h5>
+                                          </div>
+                                          <p>Curabitur luctus nisl in justo maximus egestas. Curabitur sit amet sapien
+                                             vel nunc molestie pulvinar at vitae quam. Aliquam lobortis nisi vitae
+                                             congue consectetur. Aliquam et quam non metus </p>
+                                          <div class="tp-postbox-comment-reply"><a ><i
+                                                   class="fa-light fa-reply"></i>REPLY</a></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li class="children">
+                                 <div class="tp-postbox-comment-box border-mr p-relative">
+                                    <div class="tp-postbox-comment-box-inner d-flex">
+                                       <div class="tp-postbox-comment-avater">
+                                          <img src="assets/img/blog/blog-sidebar/blog-details-5.jpg" alt="">
+                                       </div>
+                                       <div class="tp-postbox-comment-content">
+                                          <div class="tp-postbox-comment-author d-flex align-items-center">
+                                             <h5 class="tp-postbox-comment-name">Liza Olivarez</h5>
+                                          </div>
+                                          <p>Curabitur luctus nisl in justo maximus egestas. Curabitur sit amet sapien
+                                             vel nunc molestie pulvinar at vitae quam. Aliquam lobortis nisi vitae
+                                             congue consectetur. Aliquam et quam non metus </p>
+                                          <div class="tp-postbox-comment-reply"><a ><i
+                                                   class="fa-light fa-reply"></i>REPLY</a></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                           </ul> -->
+                        </div>
+
+                        <div class="tp-postbox-reply">
+                            <h3 class="tp-postbox-title">Dejanos tu comentario</h3>
+                            <form id="contact-form" action="https://html.aqlova.com/konkit-prev/konkit/assets/mail.php"
+                                method="POST">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="tp-postbox-input">
+                                            <input name="name" type="text" placeholder="Your Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="tp-postbox-input">
+                                            <input name="email" type="email" placeholder="Your E-mail">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="tp-postbox-input">
+                                            <textarea placeholder="Write Your Comment"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="tp-postbox-input-btn">
+                                            <button type="submit" class="tp-btn">Submit Comment</button>
+                                            <p class="ajax-response"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-xl-4 col-lg-4">
+                    <div class="tp-sidebar-wrapper">
+                        <div class="tp-sidebar-widget mb-60">
+                            <div class="tp-sidebar-widget-content">
+                                <div class="tp-sidebar-search">
+                                    <form>
+                                        <div class="tp-sidebar-search-input">
+                                            <input type="text" placeholder="Search here">
+                                            <button type="submit"><i class="far fa-search"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tp-sidebar-widget mb-45">
+                            <div class="tp-sidebar-widget-content">
+                                <div class="tp-sidebar-widget-about">
+                                    <div class="tp-sidebar-widget-about-thumb">
+                                        <img src="assets/img/blog/blog-sidebar/blog-sidebar-4.jpg" alt="">
+                                    </div>
+                                    <div class="tp-sidebar-widget-about-title">Know About Liza</div>
+                                    <p>Lorem ipsum is simply free text us copytyping refreshing. Neque porrot liquam
+                                        vulote</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tp-sidebar-widget mb-60">
+                            <h3 class="tp-sidebar-widget-title">Publicaciones relacionadas</h3>
+                            <div class="tp-sidebar-widget-content">
+                                <div class="tp-sidebar-post">
+                                    <div class="tp-rc__post d-flex align-items-center">
+                                        <div class="tp-rc__post-thumb mr-20">
+                                            <a><img src="assets/img/blog/blog-sidebar/blog-sidebar-5.jpg" alt=""></a>
+                                        </div>
+                                        <div class="tp-rc__post-content">
+                                            <div class="tp-rc__post-meta">
+                                                <span><i class="fa-regular fa-clock"></i> November 21, 2022 </span>
+                                            </div>
+                                            <h3 class="tp-rc__post-title">
+                                                <a>At the heart of broadcast and UK <br> utilities in the and abroad</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="tp-rc__post d-flex align-items-center">
+                                        <div class="tp-rc__post-thumb mr-20">
+                                            <a><img src="assets/img/blog/blog-sidebar/blog-sidebar-6.jpg" alt=""></a>
+                                        </div>
+                                        <div class="tp-rc__post-content">
+                                            <div class="tp-rc__post-meta">
+                                                <span><i class="fa-regular fa-clock"></i> November 21, 2022 </span>
+                                            </div>
+                                            <h3 class="tp-rc__post-title">
+                                                <a>Leave those troubles behind. We <br> sort out the switch for you </a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="tp-rc__post d-flex align-items-center">
+                                        <div class="tp-rc__post-thumb mr-20">
+                                            <a><img src="assets/img/blog/blog-sidebar/blog-sidebar-7.jpg" alt=""></a>
+                                        </div>
+                                        <div class="tp-rc__post-content">
+                                            <div class="tp-rc__post-meta">
+                                                <span><i class="fa-regular fa-clock"></i> November 21, 2022 </span>
+                                            </div>
+                                            <h3 class="tp-rc__post-title">
+                                                <a>How to bring iour own device, <br> phone or tablet </a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tp-sidebar-widget mb-50">
+                            <h3 class="tp-sidebar-widget-title">Categorias</h3>
+                            <div class="tp-sidebar-widget-content">
+                                <ul>
+                                    <li><a>General Construction</a></li>
+                                    <li><a>Property Maintance</a></li>
+                                    <li><a>Factory Design</a></li>
+                                    <li><a>Interior Design</a></li>
+                                    <li><a>Architecture Design</a></li>
+                                    <li><a>Construction</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tp-sidebar-widget mb-40">
+                            <h3 class="tp-sidebar-widget-title">Tags</h3>
+                            <div class="tp-sidebar-widget-content">
+                                <div class="tagcloud">
+                                    <a>internet</a>
+                                    <a>Construction</a>
+                                    <a>straming</a>
+                                    <a>network</a>
+                                    <a>mobile</a>
+                                    <a>business</a>
+                                    <a>security</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- postbox area end -->
+
+    <ng-template #loadingOrEmpty>
+        <section class="pt-120 pb-120">
+            <div class="container text-center">
+                <div *ngIf="loadingBlog">
+                    <h4>Cargando blog...</h4>
+                </div>
+                <div *ngIf="!loadingBlog && !blog">
+                    <h4>Blog no encontrado</h4>
+                    <p>El blog que buscas no existe o no está publicado.</p>
+                    <button class="tp-btn" (click)="goBack()">Volver</button>
+                </div>
+            </div>
+        </section>
+    </ng-template>
+</main>

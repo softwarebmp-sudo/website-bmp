@@ -10,7 +10,7 @@ export class RealtimePortfolioService {
   private pb = new PocketBase('https://db.bmpsoftware.site:8090');
   private collectionName = 'portfolio_bmp';
 
-  private portfolioSubject = new BehaviorSubject<PortfolioModel[]>([]);
+  public portfolioSubject = new BehaviorSubject<PortfolioModel[]>([]);
   portfolio$ = this.portfolioSubject.asObservable();
 
   portfolioList: PortfolioModel[] = [];

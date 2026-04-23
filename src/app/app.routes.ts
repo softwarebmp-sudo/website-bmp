@@ -6,6 +6,8 @@ import {Blog} from './pages/blog/blog';
 import {Contact} from './pages/contact/contact';
 import {LoginComponent} from './pages/dashboard/section/login/login';
 import {Dash} from './pages/dashboard/section/dash/dash';
+import {ProjectDetails} from './pages/project-details/project-details';
+import {BlogDetails} from './pages/blog-details/blog-details';
 
 export const routes: Routes = [
      {
@@ -73,6 +75,21 @@ export const routes: Routes = [
       canonical: '/',
     },
   },
+  {
+    path: 'portfolio/:id',
+    loadComponent: () =>
+      import('./pages/project-details/project-details').then(c => c.ProjectDetails),
+    title: 'BMP Company',
+    data: {
+      description: 'BMP Company S.A.S. - Soluciones integrales de ingeniería y tecnología. Seguridad electrónica, data centers, cableado estructurado, automatización, paneles solares y más. Desde 2017 en Colombia.',
+      canonical: '/',
+    },
+  },
+{
+  path: 'blog/:id',
+  loadComponent: () =>
+    import('./pages/blog-details/blog-details').then(c => c.BlogDetails),
+},
 {
   path: 'admin/login',
   loadComponent: () =>

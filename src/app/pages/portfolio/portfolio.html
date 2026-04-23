@@ -1,196 +1,40 @@
 <section class="tp-project-area tp-project-bottom-color p-relative pt-120 pb-90">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12">
-                  <div class="tp-project-tab-button masonary-menu flex-wrap mb-70">
-                     <button class="active" data-filter="*"><span>Show all</span></button>
-                     <button data-filter=".cat2"><span>Architecture</span></button>
-                     <button data-filter=".cat3"><span>Interior design</span></button>
-                     <button data-filter=".cat4"><span>Residance</span></button>
-                  </div>
-               </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="tp-project-tab-button masonary-menu flex-wrap mb-70">
+          <button class="active" data-filter="*"><span>Show all</span></button>
+          <button data-filter=".cat2"><span>Architecture</span></button>
+          <button data-filter=".cat3"><span>Interior design</span></button>
+          <button data-filter=".cat4"><span>Residance</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row grid">
+      <div class="col-lg-4 col-md-6 grid-item cat2 cat4 cat5" *ngFor="let portfolio of portfolioList">
+        <div class="tp-project-item p-relative fix mb-30">
+          <div class="tp-project-thumb p-relative fix">
+            <a [routerLink]="['/portfolio', portfolio.id]">
+              <img [src]="getPortfolioCoverUrl(portfolio)" [alt]="portfolio.name">
+            </a>
+          </div>
+
+          <div class="tp-project-item-content p-relative">
+            <span>{{ portfolio.category }}</span>
+            <h4 class="tp-project-item-title">
+              <a [routerLink]="['/portfolio', portfolio.id]">{{ portfolio.name }}</a>
+            </h4>
+            <div class="tp-project-item-btn">
+              <a [routerLink]="['/portfolio', portfolio.id]">
+                <span>
+                  <i class="fa-regular fa-plus"></i>
+                </span>
+              </a>
             </div>
-            <div class="row grid">
-               <div class="col-lg-4 col-md-6 grid-item cat2 cat4 cat5">
-                  <div class="tp-project-item p-relative fix mb-30">
-                     <div class="tp-project-thumb p-relative fix">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/project/project-2-1.jpg" alt="">
-                        </a>
-                     </div>
-                     <div class="tp-project-item-content p-relative">
-                        <span>Building</span>
-                        <h4 class="tp-project-item-title"><a href="portfolio-details.html">Museum architecture</a></h4>
-                        <div class="tp-project-item-btn">
-                           <a href="portfolio-details.html">
-                              <span>
-                                 <i class="fa-regular fa-plus"></i>
-                              </span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-md-6 grid-item cat5 cat3 cat6">
-                  <div class="tp-project-item p-relative fix mb-30">
-                     <div class="tp-project-thumb p-relative fix">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/project/project-2-2.jpg" alt="">
-                        </a>
-                     </div>
-                     <div class="tp-project-item-content p-relative">
-                        <span>Building</span>
-                        <h4 class="tp-project-item-title"><a href="portfolio-details.html">Museum architecture</a></h4>
-                        <div class="tp-project-item-btn">
-                           <a href="portfolio-details.html">
-                              <span>
-                                 <i class="fa-regular fa-plus"></i>
-                              </span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-md-6 grid-item cat3 cat2 cat6">
-                  <div class="tp-project-item p-relative fix mb-30">
-                     <div class="tp-project-thumb p-relative fix">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/project/project-2-3.jpg" alt="">
-                        </a>
-                     </div>
-                     <div class="tp-project-item-content p-relative">
-                        <span>Building</span>
-                        <h4 class="tp-project-item-title"><a href="portfolio-details.html">Museum architecture</a></h4>
-                        <div class="tp-project-item-btn">
-                           <a href="portfolio-details.html">
-                              <span>
-                                 <i class="fa-regular fa-plus"></i>
-                              </span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-md-6 grid-item cat4 cat2 cat6">
-                  <div class="tp-project-item p-relative fix mb-30">
-                     <div class="tp-project-thumb p-relative fix">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/project/project-2-4.jpg" alt="">
-                        </a>
-                     </div>
-                     <div class="tp-project-item-content p-relative">
-                        <span>Building</span>
-                        <h4 class="tp-project-item-title"><a href="portfolio-details.html">Museum architecture</a></h4>
-                        <div class="tp-project-item-btn">
-                           <a href="portfolio-details.html">
-                              <span>
-                                 <i class="fa-regular fa-plus"></i>
-                              </span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-md-6 grid-item cat2 cat4 cat6">
-                  <div class="tp-project-item p-relative fix mb-30">
-                     <div class="tp-project-thumb p-relative fix">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/project/project-2-5.jpg" alt="">
-                        </a>
-                     </div>
-                     <div class="tp-project-item-content p-relative">
-                        <span>Building</span>
-                        <h4 class="tp-project-item-title"><a href="portfolio-details.html">Museum architecture</a></h4>
-                        <div class="tp-project-item-btn">
-                           <a href="portfolio-details.html">
-                              <span>
-                                 <i class="fa-regular fa-plus"></i>
-                              </span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-md-6 grid-item cat3 cat5 cat6">
-                  <div class="tp-project-item p-relative fix mb-30">
-                     <div class="tp-project-thumb p-relative fix">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/project/project-2-6.jpg" alt="">
-                        </a>
-                     </div>
-                     <div class="tp-project-item-content p-relative">
-                        <span>Building</span>
-                        <h4 class="tp-project-item-title"><a href="portfolio-details.html">Museum architecture</a></h4>
-                        <div class="tp-project-item-btn">
-                           <a href="portfolio-details.html">
-                              <span>
-                                 <i class="fa-regular fa-plus"></i>
-                              </span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-md-6 grid-item cat3 cat5 cat6">
-                  <div class="tp-project-item p-relative fix mb-30">
-                     <div class="tp-project-thumb p-relative fix">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/project/project-2-7.jpg" alt="">
-                        </a>
-                     </div>
-                     <div class="tp-project-item-content p-relative">
-                        <span>Building</span>
-                        <h4 class="tp-project-item-title"><a href="portfolio-details.html">Museum architecture</a></h4>
-                        <div class="tp-project-item-btn">
-                           <a href="portfolio-details.html">
-                              <span>
-                                 <i class="fa-regular fa-plus"></i>
-                              </span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-md-6 grid-item cat3 cat5 cat6">
-                  <div class="tp-project-item p-relative fix mb-30">
-                     <div class="tp-project-thumb p-relative fix">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/project/project-2-8.jpg" alt="">
-                        </a>
-                     </div>
-                     <div class="tp-project-item-content p-relative">
-                        <span>Building</span>
-                        <h4 class="tp-project-item-title"><a href="portfolio-details.html">Museum architecture</a></h4>
-                        <div class="tp-project-item-btn">
-                           <a href="portfolio-details.html">
-                              <span>
-                                 <i class="fa-regular fa-plus"></i>
-                              </span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-md-6 grid-item cat3 cat5 cat6">
-                  <div class="tp-project-item p-relative fix mb-30">
-                     <div class="tp-project-thumb p-relative fix">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/project/project-2-9.jpg" alt="">
-                        </a>
-                     </div>
-                     <div class="tp-project-item-content p-relative">
-                        <span>Building</span>
-                        <h4 class="tp-project-item-title"><a href="portfolio-details.html">Museum architecture</a></h4>
-                        <div class="tp-project-item-btn">
-                           <a href="portfolio-details.html">
-                              <span>
-                                 <i class="fa-regular fa-plus"></i>
-                              </span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

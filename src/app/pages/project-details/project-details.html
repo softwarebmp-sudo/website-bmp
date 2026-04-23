@@ -1,1 +1,70 @@
-<p>project-details works!</p>
+<section class="tp-project-details-area pt-120 pb-120" *ngIf="!loading && project; else loadingOrEmpty">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="tp-project-details-thumb mb-50">
+          <img [src]="getProjectCoverUrl()" [alt]="project.name" class="w-100">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="tp-project-details-content">
+          <span class="tp-project-details-category">{{ project.category }}</span>
+          <h2 class="tp-project-details-title mb-20">{{ project.name }}</h2>
+
+          <p *ngIf="project.description">
+            {{ project.description }}
+          </p>
+
+          <p *ngIf="!project.description">
+            Este proyecto no tiene descripción registrada todavía.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="tp-project-details-sidebar">
+          <div class="tp-project-details-info-box mb-30">
+            <h4>Información del proyecto</h4>
+
+            <ul class="list-unstyled">
+              <li *ngIf="project.category">
+                <strong>Categoría:</strong> {{ project.category }}
+              </li>
+
+              <li *ngIf="project.created">
+                <strong>Fecha:</strong> {{ project.created | date:'mediumDate' }}
+              </li>
+
+              <li *ngIf="project.status">
+                <strong>Estado:</strong> {{ project.status }}
+              </li>
+            </ul>
+          </div>
+
+          <button class="tp-btn" (click)="goBack()">
+            Volver al portafolio
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #loadingOrEmpty>
+  <section class="pt-120 pb-120">
+    <div class="container text-center">
+      <div *ngIf="loading">
+        <h4>Cargando proyecto...</h4>
+      </div>
+
+      <div *ngIf="!loading && !project">
+        <h4>Proyecto no encontrado</h4>
+        <p>El proyecto que buscas no existe o no está publicado.</p>
+        <button class="tp-btn" (click)="goBack()">Volver</button>
+      </div>
+    </div>
+  </section>
+</ng-template>
