@@ -7,9 +7,18 @@
 
     <nav class="sidebar-nav">
       <a routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
-      <a routerLink="/admin/portfolio" routerLinkActive="active">Portafolio</a>
-      <a routerLink="/admin/services" routerLinkActive="active">Servicios</a>
-      <a routerLink="/admin/blog" routerLinkActive="active">Blog</a>
+
+      <ng-container *ngIf="isAdmin">
+        <a routerLink="/admin/portfolio" routerLinkActive="active">Portafolio</a>
+        <a routerLink="/admin/services" routerLinkActive="active">Servicios</a>
+        <a routerLink="/admin/blog" routerLinkActive="active">Blog</a>
+        <a routerLink="/admin/testimonials" routerLinkActive="active">Testimonios</a>
+        <a routerLink="/admin/teams" routerLinkActive="active">Equipo</a>
+      </ng-container>
+
+      <a routerLink="/admin/works" routerLinkActive="active">Proyectos en Curso</a>
+
+      <a href="javascript:void(0)" (click)="logout()">Cerrar sesión</a>
     </nav>
   </aside>
 
@@ -17,63 +26,61 @@
     <div *ngIf="showDashboardContent" class="dashboard-home">
       <div class="welcome-card">
         <h1 style="color: #ff5e14;">Hola, {{ adminName }}</h1>
-        <p style="color: #fff;">Administra el contenido principal del sitio web de BMP Company.</p>
+
+        <p style="color: #fff;" *ngIf="isAdmin">
+          Administra el contenido principal del sitio web de BMP Company.
+        </p>
+
+        <p style="color: #fff;" *ngIf="isEngineer">
+          Administra únicamente los avances de obra y proyectos en curso.
+        </p>
       </div>
 
       <div class="stats-grid">
-        <div class="stat-card">
-          <h3>Portafolio</h3>
-          <p class="stat-number" *ngIf="!loadingPortfolio">{{ totalPortfolio }}</p>
-          <p class="loading-text" *ngIf="loadingPortfolio">Cargando...</p>
-          <a routerLink="/admin/portfolio">Gestionar</a>
-        </div>
+        <ng-container *ngIf="isAdmin">
+          <div class="stat-card">
+            <h3>Portafolio</h3>
+            <p class="stat-number" *ngIf="!loadingPortfolio">{{ totalPortfolio }}</p>
+            <p class="loading-text" *ngIf="loadingPortfolio">Cargando...</p>
+            <a routerLink="/admin/portfolio">Gestionar</a>
+          </div>
 
-        <div class="stat-card">
-          <h3>Servicios</h3>
-          <p class="stat-number" *ngIf="!loadingServices">{{ totalServices }}</p>
-          <p class="loading-text" *ngIf="loadingServices">Cargando...</p>
-          <a routerLink="/admin/services">Gestionar</a>
-        </div>
+          <div class="stat-card">
+            <h3>Servicios</h3>
+            <p class="stat-number" *ngIf="!loadingServices">{{ totalServices }}</p>
+            <p class="loading-text" *ngIf="loadingServices">Cargando...</p>
+            <a routerLink="/admin/services">Gestionar</a>
+          </div>
 
-        <div class="stat-card">
-          <h3>Blog</h3>
-          <p class="stat-number" *ngIf="!loadingBlog">{{ totalBlog }}</p>
-          <p class="loading-text" *ngIf="loadingBlog">Cargando...</p>
-          <a routerLink="/admin/blog">Gestionar</a>
-        </div>
-        <div class="stat-card">
-          <h3>Testimonios</h3>
-          <p class="stat-number" *ngIf="!loadingBlog">{{ totalTestimonials }}</p>
-          <p class="loading-text" *ngIf="loadingBlog">Cargando...</p>
-          <a routerLink="/admin/testimonials">Gestionar</a>
-        </div>
-        <div class="stat-card">
-          <h3>Equipo</h3>
-          <p class="stat-number" *ngIf="!loadingBlog">{{ totalTeams }}</p>
-          <p class="loading-text" *ngIf="loadingBlog">Cargando...</p>
-          <a routerLink="/admin/teams">Gestionar</a>
-        </div>
+          <div class="stat-card">
+            <h3>Blog</h3>
+            <p class="stat-number" *ngIf="!loadingBlog">{{ totalBlog }}</p>
+            <p class="loading-text" *ngIf="loadingBlog">Cargando...</p>
+            <a routerLink="/admin/blog">Gestionar</a>
+          </div>
+
+          <div class="stat-card">
+            <h3>Testimonios</h3>
+            <p class="stat-number" *ngIf="!loadingTestimonials">{{ totalTestimonials }}</p>
+            <p class="loading-text" *ngIf="loadingTestimonials">Cargando...</p>
+            <a routerLink="/admin/testimonials">Gestionar</a>
+          </div>
+
+          <div class="stat-card">
+            <h3>Equipo</h3>
+            <p class="stat-number" *ngIf="!loadingTeams">{{ totalTeams }}</p>
+            <p class="loading-text" *ngIf="loadingTeams">Cargando...</p>
+            <a routerLink="/admin/teams">Gestionar</a>
+          </div>
+        </ng-container>
+
         <div class="stat-card">
           <h3>Proyectos en Curso</h3>
-          <p class="stat-number" *ngIf="!loadingBlog">{{ totalWorks }}</p>
-          <p class="loading-text" *ngIf="loadingBlog">Cargando...</p>
+          <p class="stat-number" *ngIf="!loadingWorks">{{ totalWorks }}</p>
+          <p class="loading-text" *ngIf="loadingWorks">Cargando...</p>
           <a routerLink="/admin/works">Gestionar</a>
         </div>
-
       </div>
-      
-
-      <!-- <div class="quick-actions">
-        <h2>Acciones rápidas</h2>
-        <div class="actions-grid">
-          <a class="action-btn" routerLink="/admin/portfolio">+ Nuevo proyecto</a>
-          <a class="action-btn" routerLink="/admin/services">+ Nuevo servicio</a>
-          <a class="action-btn" routerLink="/admin/blog">+ Nueva entrada</a>
-          <a class="action-btn" routerLink="/admin/testimonials">+ Nuevo testimonio</a>
-          <a class="action-btn" routerLink="/admin/teams">+ Nuevo miembro</a>
-          <a class="action-btn" routerLink="/admin/works">+ Nuevo proyecto en curso</a>
-        </div>
-      </div> -->
     </div>
 
     <router-outlet></router-outlet>

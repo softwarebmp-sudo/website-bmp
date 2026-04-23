@@ -41,21 +41,26 @@ export class LoginComponent {
 
     this.loading = true;
 
-    const { email, password, rememberMe } = this.loginForm.value;
+    const { email, password } = this.loginForm.value;
 
-    console.log('Login admin:', { email, password, rememberMe });
-
-    // Simulación temporal
     setTimeout(() => {
       this.loading = false;
 
-      // Aquí luego conectas tu auth real
       if (email === 'admin@bmpcompany.com' && password === '123456') {
         localStorage.setItem('admin_session', 'true');
+        localStorage.setItem('admin_role', 'admin');
         this.router.navigate(['/admin/panel']);
-      } else {
-        alert('Credenciales inválidas');
+        return;
       }
+
+      if (email === 'ingeniero@bmpcompany.com' && password === '123456') {
+        localStorage.setItem('admin_session', 'true');
+        localStorage.setItem('admin_role', 'engineer');
+        this.router.navigate(['/admin/panel']);
+        return;
+      }
+
+      alert('Credenciales inválidas');
     }, 1000);
   }
 }

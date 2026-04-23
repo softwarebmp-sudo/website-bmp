@@ -10,6 +10,7 @@ import { RealtimeBlogService } from '../../../../services/realtime-blog.service'
 import { RouterOutlet } from '@angular/router';
 import { RealtimeTestimonialsService } from '../../../../services/realtime-testimonial.service';
 import { RealtimeTeamsService } from '../../../../services/realtime-team.service';
+import { RealtimeWorksService } from '../../../../services/realtime-work.service';
 
 @Component({
   selector: 'app-dash',
@@ -19,8 +20,9 @@ import { RealtimeTeamsService } from '../../../../services/realtime-team.service
   styleUrl: './dash.scss',
 })
 export class Dash implements OnInit, OnDestroy {
-  adminName = 'Administrador';
   showDashboardContent = true;
+  adminName = 'Administrador';
+  adminRole = 'admin';
 
   totalPortfolio = 0;
   totalServices = 0;
@@ -45,8 +47,8 @@ export class Dash implements OnInit, OnDestroy {
     public realtimeBlogService: RealtimeBlogService,
     public realtimeTestimonialsService: RealtimeTestimonialsService,
     public realtimeTeamsService: RealtimeTeamsService,
-/*     public realtimeWorksService: RealtimeWorksService
- */  ) {}
+    public realtimeWorksService: RealtimeWorksService
+  ) { }
 
   ngOnInit(): void {
     this.loadCounts();
@@ -57,6 +59,14 @@ export class Dash implements OnInit, OnDestroy {
         const currentUrl = this.router.url;
         this.showDashboardContent = currentUrl === '/admin' || currentUrl === '/admin/dashboard';
       });
+    const role = localStorage.getItem('admin_role') || 'admin';
+    this.adminRole = role;
+
+    if (role === 'engineer') {
+      this.adminName = 'Ingeniero';
+    } else {
+      this.adminName = 'Administrador';
+    }
   }
 
   async loadCounts(): Promise<void> {
@@ -66,8 +76,8 @@ export class Dash implements OnInit, OnDestroy {
       this.loadBlogCount(),
       this.loadTestimonialsCount(),
       this.loadTeamsCount(),
-/*       this.loadWorksCount()
- */    ]);
+      this.loadWorksCount()
+    ]);
   }
 
   async loadPortfolioCount(): Promise<void> {
@@ -130,7 +140,7 @@ export class Dash implements OnInit, OnDestroy {
     }
   }
 
-  /* async loadWorksCount(): Promise<void> {
+  async loadWorksCount(): Promise<void> {
     try {
       this.loadingWorks = true;
       await this.realtimeWorksService.loadWorks();
@@ -140,9 +150,22 @@ export class Dash implements OnInit, OnDestroy {
     } finally {
       this.loadingWorks = false;
     }
-  } */
+  }
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
+  }
+
+  get isAdmin(): boolean {
+  return this.adminRole === 'admin';
+}
+
+get isEngineer(): boolean {
+  return this.adminRole === 'engineer';
+}
+  logout(): void {
+    localStorage.removeItem('admin_session');
+    localStorage.removeItem('admin_role');
+    this.router.navigate(['/login']);
   }
 }
