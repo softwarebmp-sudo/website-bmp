@@ -1,7 +1,7 @@
 <div class="admin-layout">
   <aside class="sidebar">
     <div class="sidebar-header">
-      <h2>BMP Admin</h2>
+      <h2 style="color: #ff5e14;">BMP Admin</h2>
       <p>Panel de gestión</p>
     </div>
 
@@ -41,16 +41,39 @@
           <p class="loading-text" *ngIf="loadingBlog">Cargando...</p>
           <a routerLink="/admin/blog">Gestionar</a>
         </div>
-      </div>
+        <div class="stat-card">
+          <h3>Testimonios</h3>
+          <p class="stat-number" *ngIf="!loadingBlog">{{ totalTestimonials }}</p>
+          <p class="loading-text" *ngIf="loadingBlog">Cargando...</p>
+          <a routerLink="/admin/testimonials">Gestionar</a>
+        </div>
+        <div class="stat-card">
+          <h3>Equipo</h3>
+          <p class="stat-number" *ngIf="!loadingBlog">{{ totalTeams }}</p>
+          <p class="loading-text" *ngIf="loadingBlog">Cargando...</p>
+          <a routerLink="/admin/teams">Gestionar</a>
+        </div>
+        <div class="stat-card">
+          <h3>Proyectos en Curso</h3>
+          <p class="stat-number" *ngIf="!loadingBlog">{{ totalWorks }}</p>
+          <p class="loading-text" *ngIf="loadingBlog">Cargando...</p>
+          <a routerLink="/admin/works">Gestionar</a>
+        </div>
 
-      <div class="quick-actions">
+      </div>
+      
+
+      <!-- <div class="quick-actions">
         <h2>Acciones rápidas</h2>
         <div class="actions-grid">
           <a class="action-btn" routerLink="/admin/portfolio">+ Nuevo proyecto</a>
           <a class="action-btn" routerLink="/admin/services">+ Nuevo servicio</a>
           <a class="action-btn" routerLink="/admin/blog">+ Nueva entrada</a>
+          <a class="action-btn" routerLink="/admin/testimonials">+ Nuevo testimonio</a>
+          <a class="action-btn" routerLink="/admin/teams">+ Nuevo miembro</a>
+          <a class="action-btn" routerLink="/admin/works">+ Nuevo proyecto en curso</a>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <router-outlet></router-outlet>

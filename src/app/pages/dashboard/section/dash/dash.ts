@@ -8,6 +8,8 @@ import { RealtimePortfolioService } from '../../../../services/realtime-portfoli
 import { RealtimeServicesService } from '../../../../services/realtime-services.service';
 import { RealtimeBlogService } from '../../../../services/realtime-blog.service';
 import { RouterOutlet } from '@angular/router';
+import { RealtimeTestimonialsService } from '../../../../services/realtime-testimonial.service';
+import { RealtimeTeamsService } from '../../../../services/realtime-team.service';
 
 @Component({
   selector: 'app-dash',
@@ -23,10 +25,16 @@ export class Dash implements OnInit, OnDestroy {
   totalPortfolio = 0;
   totalServices = 0;
   totalBlog = 0;
+  totalTestimonials = 0;
+  totalTeams = 0;
+  totalWorks = 0;
 
   loadingPortfolio = false;
   loadingServices = false;
   loadingBlog = false;
+  loadingTestimonials = false;
+  loadingTeams = false;
+  loadingWorks = false;
 
   private sub?: Subscription;
 
@@ -34,8 +42,11 @@ export class Dash implements OnInit, OnDestroy {
     public router: Router,
     public realtimePortfolioService: RealtimePortfolioService,
     public realtimeServicesService: RealtimeServicesService,
-    public realtimeBlogService: RealtimeBlogService
-  ) {}
+    public realtimeBlogService: RealtimeBlogService,
+    public realtimeTestimonialsService: RealtimeTestimonialsService,
+    public realtimeTeamsService: RealtimeTeamsService,
+/*     public realtimeWorksService: RealtimeWorksService
+ */  ) {}
 
   ngOnInit(): void {
     this.loadCounts();
@@ -53,7 +64,10 @@ export class Dash implements OnInit, OnDestroy {
       this.loadPortfolioCount(),
       this.loadServicesCount(),
       this.loadBlogCount(),
-    ]);
+      this.loadTestimonialsCount(),
+      this.loadTeamsCount(),
+/*       this.loadWorksCount()
+ */    ]);
   }
 
   async loadPortfolioCount(): Promise<void> {
@@ -91,6 +105,42 @@ export class Dash implements OnInit, OnDestroy {
       this.loadingBlog = false;
     }
   }
+
+  async loadTestimonialsCount(): Promise<void> {
+    try {
+      this.loadingTestimonials = true;
+      await this.realtimeTestimonialsService.loadTestimonials();
+      this.totalTestimonials = this.realtimeTestimonialsService.testimonialsList.length;
+    } catch (error) {
+      console.error('Error cargando testimonios:', error);
+    } finally {
+      this.loadingTestimonials = false;
+    }
+  }
+
+  async loadTeamsCount(): Promise<void> {
+    try {
+      this.loadingTeams = true;
+      await this.realtimeTeamsService.loadTeams();
+      this.totalTeams = this.realtimeTeamsService.teamsList.length;
+    } catch (error) {
+      console.error('Error cargando equipos:', error);
+    } finally {
+      this.loadingTeams = false;
+    }
+  }
+
+  /* async loadWorksCount(): Promise<void> {
+    try {
+      this.loadingWorks = true;
+      await this.realtimeWorksService.loadWorks();
+      this.totalWorks = this.realtimeWorksService.worksList.length;
+    } catch (error) {
+      console.error('Error cargando trabajos:', error);
+    } finally {
+      this.loadingWorks = false;
+    }
+  } */
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();

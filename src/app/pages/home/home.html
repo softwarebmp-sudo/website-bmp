@@ -402,7 +402,7 @@
             <div class="tp-testimonial-3-slider wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
                 <div class="tp-testimonial-active swiper">
                     <div class="swiper-wrapper pb-70">
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" *ngFor="let testimonial of publishedTestimonials">
                             <div class="tp-testimonial-3-item p-relative">
                                 <div class="tp-testimonial-3-content p-relative">
                                     <div class="tp-testimonial-3-rating">
@@ -412,67 +412,16 @@
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-solid fa-star"></i>
                                     </div>
-                                    <p>Lorem ipsum dolor sit am consectetur adipisicing elit sed do eius tempor
-                                        incididunt ut labore et dolore ma aliqua. Ut enim ad minim</p>
+                                    <p>{{ testimonial.message }}</p>
                                 </div>
                                 <div
                                     class="tp-testimonial-3-user-wrapper d-flex justify-content-center align-items-center">
                                     <div class="tp-testimonial-3-thumb">
-                                        <img src="assets/img/testimonial/testimonial-2-1.jpg" alt="">
+                                        <img src="{{ testimonial.avatar }}" alt="">
                                     </div>
                                     <div class="tp-testimonial-3-user">
-                                        <h5 class="tp-testimonial-3-title">Dharsan Raval</h5>
-                                        <span>Engineer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="tp-testimonial-3-item p-relative">
-                                <div class="tp-testimonial-3-content p-relative">
-                                    <div class="tp-testimonial-3-rating">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit am consectetur adipisicing elit sed do eius tempor
-                                        incididunt ut labore et dolore ma aliqua. Ut enim ad minim</p>
-                                </div>
-                                <div
-                                    class="tp-testimonial-3-user-wrapper d-flex justify-content-center align-items-center">
-                                    <div class="tp-testimonial-3-thumb">
-                                        <img src="assets/img/testimonial/testimonial-2-2.jpg" alt="">
-                                    </div>
-                                    <div class="tp-testimonial-3-user">
-                                        <h5 class="tp-testimonial-3-title">Dharsan Raval</h5>
-                                        <span>Engineer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="tp-testimonial-3-item p-relative">
-                                <div class="tp-testimonial-3-content p-relative">
-                                    <div class="tp-testimonial-3-rating">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit am consectetur adipisicing elit sed do eius tempor
-                                        incididunt ut labore et dolore ma aliqua. Ut enim ad minim</p>
-                                </div>
-                                <div
-                                    class="tp-testimonial-3-user-wrapper d-flex justify-content-center align-items-center">
-                                    <div class="tp-testimonial-3-thumb">
-                                        <img src="assets/img/testimonial/testimonial-2-3.jpg" alt="">
-                                    </div>
-                                    <div class="tp-testimonial-3-user">
-                                        <h5 class="tp-testimonial-3-title">Dharsan Raval</h5>
-                                        <span>Engineer</span>
+                                        <h5 class="tp-testimonial-3-title">{{ testimonial.name }}</h5>
+                                        <span>{{ testimonial.role }}</span>
                                     </div>
                                 </div>
                             </div>

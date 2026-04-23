@@ -7,6 +7,8 @@ import { PortfolioModel } from '../../models/portfolio.model';
 import { RealtimePortfolioService } from '../../services/realtime-portfolio.service';
 import { BlogModel } from '../../models/blog.model';
 import { RealtimeBlogService } from '../../services/realtime-blog.service';
+import { TestimonialModel } from '../../models/testimonial.model';
+import { RealtimeTestimonialsService } from '../../services/realtime-testimonial.service';
 
 declare var Swiper: any;
 declare var WOW: any;
@@ -30,17 +32,26 @@ export class Home implements AfterViewInit, OnDestroy {
   loadingPortfolio = false;
   blogList: BlogModel[] = [];
 loadingBlog = false;
+publishedTestimonials: TestimonialModel[] = [];
+loadingTestimonials = false;
+
   constructor(private ngZone: NgZone, public router: Router,
     public realtimeServicesService: RealtimeServicesService,
     private cdr: ChangeDetectorRef,
     public realtimePortfolioService: RealtimePortfolioService,
-    public realtimeBlogService: RealtimeBlogService
+    public realtimeBlogService: RealtimeBlogService,
+    public realtimeTestimonialsService: RealtimeTestimonialsService
   ) { }
 
   async ngOnInit(): Promise<void> {
     await this.loadServices();
     await this.loadPortfolio();
     await this.loadBlog();
+    await this.realtimeTestimonialsService.loadTestimonials();
+
+  this.realtimeTestimonialsService.testimonials$.subscribe(data => {
+    this.publishedTestimonials = data.filter(item => item.status === 'publicado');
+  });
   }
 
   async loadServices(): Promise<void> {

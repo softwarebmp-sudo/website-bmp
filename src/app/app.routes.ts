@@ -139,7 +139,43 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/dashboard/section/add-post/add-post').then(c => c.AddPost),
         title: 'Agregar Post | BMP Company'
-      }
+      },
+      {
+        path: 'add-testimonial',
+        loadComponent: () =>
+          import('./pages/dashboard/section/add-testimonial/add-testimonial').then(c => c.AddTestimonial),
+        title: 'Agregar Testimonial | BMP Company'
+      },
+      {
+        path: 'add-teams',
+        loadComponent: () =>
+          import('./pages/dashboard/section/add-teams/add-teams').then(c => c.AddTeams),
+        title: 'Agregar Equipo | BMP Company'
+      },
+      {
+        path: 'add-works',
+        loadComponent: () =>
+          import('./pages/dashboard/section/add-works/add-works').then(c => c.AddWorks),
+        title: 'Agregar Proyectos en Curso | BMP Company'
+      },
+      {
+        path: 'testimonials',
+        loadComponent: () =>
+          import('./pages/dashboard/section/testimonials/testimonials').then(c => c.Testimonials),
+        title: 'Administrar Testimonios | BMP Company'
+      },
+      {
+        path: 'teams',
+        loadComponent: () =>
+          import('./pages/dashboard/section/teams/teams').then(c => c.Teams),
+        title: 'Administrar Equipo | BMP Company'
+      },
+      {
+        path: 'works',
+        loadComponent: () =>
+          import('./pages/dashboard/section/works/works').then(c => c.Works),
+        title: 'Administrar Proyectos en Curso | BMP Company'
+      },
   ]
 }
   

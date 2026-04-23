@@ -1,0 +1,192 @@
+<div class="portfolio-admin">
+
+  <div class="page-header">
+    <div>
+      <h1>Gestión de equipos</h1>
+      <p>Crea, edita y elimina equipos.</p>
+    </div>
+
+    <div class="header-actions" *ngIf="!showForm">
+      <button type="button" class="add-btn secondary-btn-top" routerLink="/admin/panel">
+        <i class="fa-solid fa-arrow-left"></i>
+        Volver
+      </button>
+
+      <button type="button" class="add-btn" (click)="openCreateForm()">
+        <i class="fa-solid fa-plus"></i>
+        Agregar equipo
+      </button>
+    </div>
+  </div>
+
+  <div class="admin-card" *ngIf="showForm">
+    <div class="form-header">
+      <div>
+        <h2>{{ editingId ? 'Editar equipo' : 'Nuevo equipo' }}</h2>
+        <p>Completa la información del equipo.</p>
+      </div>
+
+      <button type="button" class="close-btn" (click)="closeForm()">
+        <i class="fa-solid fa-xmark"></i>
+        Cerrar
+      </button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="portfolio-form">
+      <div class="grid">
+        <div class="field">
+          <label for="name">Nombre del cliente</label>
+          <input id="name" type="text" formControlName="name" placeholder="Ej. Andrea Zambrano" />
+          <small class="field-error" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+            El nombre es obligatorio.
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="role">Cargo</label>
+          <input id="role" type="text" formControlName="role" placeholder="Ej. Developer" />
+        </div>
+
+        <div class="field">
+          <label for="company">Empresa</label>
+          <input id="company" type="text" formControlName="company" placeholder="Ej. Buckapi" />
+        </div>
+
+        <div class="field">
+          <label for="status">Estado</label>
+          <select id="status" formControlName="status">
+            <option *ngFor="let status of statusOptions" [value]="status">
+              {{ status }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="orderIndex">Orden</label>
+          <input id="orderIndex" type="number" formControlName="orderIndex" placeholder="0" />
+        </div>
+
+        <div class="field checkbox-field">
+          <label for="featuredCheck">
+            <input id="featuredCheck" type="checkbox" formControlName="featured" />
+            Equipo destacado
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="bio">Biografia</label>
+        <textarea
+          id="bio"
+          rows="5"
+          formControlName="bio"
+          placeholder="Escribe aquí la biografia del equipo"
+        ></textarea>
+        <small class="field-error" *ngIf="form.get('bio')?.invalid && form.get('bio')?.touched">
+          La biografia es obligatoria.
+        </small>
+      </div>
+
+      <div class="field">
+        <label for="avatar">Foto del cliente</label>
+        <input id="avatar" type="file" accept="image/*" (change)="onImageChange($event)" />
+
+        <!-- <div class="image-preview-block" *ngIf="getImageUrl() as imageUrl">
+          <p class="preview-title">Foto actual</p>
+          <div class="single-image-preview avatar-preview">
+            <img [src]="imageUrl" alt="Avatar actual" />
+            <button type="button" class="danger small-btn" (click)="removeCurrentImage()">
+              Quitar foto
+            </button>
+          </div>
+        </div> -->
+
+        <div class="image-preview-block" *ngIf="selectedImageFile">
+          <p class="preview-title">Nueva foto seleccionada</p>
+          <div class="file-chip">
+            <span>{{ selectedImageFile.name }}</span>
+            <button type="button" class="danger-text" (click)="removeImageSelection()">
+              Quitar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" [disabled]="saving">
+          {{ saving ? 'Guardando...' : (editingId ? 'Actualizar equipo' : 'Crear equipo') }}
+        </button>
+
+        <button type="button" class="secondary" (click)="closeForm()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="admin-card">
+    <h2>Listado de equipos</h2>
+
+    <div *ngIf="loading" class="empty-state">
+      <p>Cargando equipos...</p>
+    </div>
+
+    <div class="projects-grid" *ngIf="!loading && teamsList.length">
+      <div class="project-card testimonial-card" *ngFor="let item of teamsList">
+
+        <div class="project-cover testimonial-cover">
+          <img *ngIf="getImageUrl(item) as avatarUrl; else noAvatar" [src]="avatarUrl" [alt]="item.name" />
+          <ng-template #noAvatar>
+            <div class="no-avatar">
+              <i class="fa-regular fa-user"></i>
+            </div>
+          </ng-template>
+        </div>
+
+        <div class="project-content">
+          <div class="testimonial-head">
+            <div>
+              <h3>{{ item.name }}</h3>
+              <p class="testimonial-role">
+                {{ item.role || 'Cliente' }}
+              </p>
+            </div>
+
+            <span class="badge" [ngClass]="item.status">
+              {{ item.status }}
+            </span>
+          </div>
+
+          <p class="testimonial-message">{{ item.bio }}</p>
+
+          <div class="testimonial-meta">
+            <span class="mini-badge featured" *ngIf="item.featured">
+              <i class="fa-solid fa-star"></i>
+              Destacado
+            </span>
+
+            <span class="mini-badge order">
+              Orden: {{ item.orderIndex ?? 0 }}
+            </span>
+          </div>
+        </div>
+
+        <div class="project-actions">
+          <button type="button" (click)="editItem(item)">
+            <i class="fa-solid fa-pen"></i>
+            Editar
+          </button>
+
+          <button type="button" class="danger" (click)="deleteItem(item.id)">
+            <i class="fa-solid fa-trash"></i>
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="!loading && !teamsList.length">
+      <p>No hay equipos creados todavía.</p>
+    </div>
+  </div>
+</div>
