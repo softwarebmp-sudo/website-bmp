@@ -32,7 +32,7 @@
                                             <div class="tp-hero-btn-wrap p-relative fix">
                                                 <div class="tp-hero-button-wrapper d-flex flex-wrap align-items-center">
                                                     <div class="tp-hero-btn">
-                                                        <a class="tp-btn tp-icon-style" routerLink="/portfolio">
+                                                        <a class="tp-btn tp-icon-style" [routerLink]="['/portfolio']">
                                                             Ver proyectos
                                                             <span>
                                                                 <svg class="qodef-svg--custom-arrow qodef-m-arrow"
@@ -281,58 +281,56 @@
 
     <!-- portfolio area start -->
     <section class="tp-portfolio-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="tp-offer-title-wrapper text-center mb-55">
-                    <span class="tp-section-title-pre">PROYECTOS DESTACADOS</span>
-                    <h3 class="tp-section-title">Estructuras increíbles <br> construidas por nosotros.</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="tp-offer-title-wrapper text-center mb-55">
+                        <span class="tp-section-title-pre">PROYECTOS DESTACADOS</span>
+                        <h3 class="tp-section-title">Estructuras increíbles <br> construidas por nosotros.</h3>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="container-fluid gx-0">
-        <div class="tp-portfolio-slider tp-cursor-point-area">
-            <div class="tp-portfolio-active swiper slider-drag">
-                <div class="swiper-wrapper">
+        <div class="container-fluid gx-0">
+            <div class="tp-portfolio-slider tp-cursor-point-area">
+                <div class="tp-portfolio-active swiper slider-drag">
+                    <div class="swiper-wrapper">
 
-                    <div class="swiper-slide" *ngFor="let item of portfolioList">
-                        <div class="tp-portfolio-thumb">
-                            <img
-                                *ngIf="getPortfolioCoverUrl(item) as coverUrl; else defaultPortfolioCover"
-                                [src]="coverUrl"
-                                [alt]="item.name">
+                        <div class="swiper-slide" *ngFor="let item of portfolioList | slice:0:6">
+                            <div class="tp-portfolio-thumb">
+                                <img *ngIf="getPortfolioCoverUrl(item) as coverUrl; else defaultPortfolioCover"
+                                    [src]="coverUrl" [alt]="item.name">
 
-                            <ng-template #defaultPortfolioCover>
-                                <img src="assets/img/portfolio/portfolio-1-1.jpg" [alt]="item.name || 'Proyecto'">
-                            </ng-template>
+                                <ng-template #defaultPortfolioCover>
+                                    <img src="assets/img/portfolio/portfolio-1-1.jpg" [alt]="item.name || 'Proyecto'">
+                                </ng-template>
 
-                            <div class="tp-portfolio-thumb-info">
-                                <p>{{ item.category || item.type }}</p>
-                                <h4 class="tp-portfolio-title">
-                                    <a routerLink="/portfolio">
-                                        {{ item.name }}
+                                <div class="tp-portfolio-thumb-info">
+                                    <p>{{ item.category || item.type }}</p>
+                                    <h4 class="tp-portfolio-title">
+                                        <a [routerLink]="['/portfolio', item.id]">
+                                            {{ item.name }}
+                                        </a>
+                                    </h4>
+                                </div>
+
+                                <div class="tp-portfolio-btn">
+                                    <a [routerLink]="['/portfolio', item.id]">
+                                        <i class="fa-light fa-arrow-right"></i>
                                     </a>
-                                </h4>
-                            </div>
-
-                            <div class="tp-portfolio-btn">
-                                <a routerLink="/portfolio">
-                                    <i class="fa-light fa-arrow-right"></i>
-                                </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
     <!-- portfolio area end -->
 
-    <!-- video area start -->
+    <!-- propuesta de valor area start -->
     <section class="tp-video-area p-relative pt-120 pb-100">
         <div class="tp-video-shape">
             <img src="assets/img/video/video-1-shape.png" alt="">
@@ -362,14 +360,7 @@
                                     <li><i class="fa-solid fa-check"></i> Soluciones de emergencia</li>
                                 </ul>
                             </div>
-                            <div class="tp-video-play p-relative" data-background="assets/img/video/video-1-2.jpg">
-                                <div class="tp-video-popup">
-                                    <a class="popup-video" href="https://www.youtube.com/watch?v=go7QYaQR494">
-                                        <span><i class="fa-regular fa-play"></i></span>
-                                        <p>VER VIDEOS</p>
-                                    </a>
-                                </div>
-                            </div>
+                           
                         </div>
                         <div class="tp-video-icon-box d-flex justify-content-between">
                             <div class="tp-video-icon-content d-flex">
@@ -386,7 +377,7 @@
             </div>
         </div>
     </section>
-    <!-- video area end -->
+    <!-- propuesta de valor area end -->
 
     <!-- testimonial area start -->
     <section class="tp-testimonial-3-area tp-testimonial-3-bg ">
@@ -509,79 +500,74 @@
 
     <!-- blog area start -->
     <section class="tp-blog-area p-relative gray-bg pt-120 pb-90">
-    <div class="tp-blog-shape">
-        <img src="assets/img/blog/blog-1-shapa.png" alt="">
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="tp-blog-title-wrapper text-center mb-65">
-                    <span class="tp-section-title-pre">Nuestro BLOG</span>
-                    <h3 class="tp-section-title">Leer nuestro blog & post</h3>
-                </div>
-            </div>
+        <div class="tp-blog-shape">
+            <img src="assets/img/blog/blog-1-shapa.png" alt="">
         </div>
 
-        <div class="row">
-            <div class="col-lg-4 col-md-6" *ngFor="let item of blogList; let i = index">
-                <div class="tp-blog-item mb-30 wow fadeInUp"
-                    data-wow-duration="1s"
-                    [attr.data-wow-delay]="i === 0 ? '.3s' : i === 1 ? '.5s' : '.7s'">
-
-                    <div class="tp-blog-thumb">
-                        <a routerLink="/blog">
-                            <img
-                                *ngIf="getBlogCoverUrl(item) as coverUrl; else defaultBlogCover"
-                                [src]="coverUrl"
-                                [alt]="item.title || 'Blog'">
-
-                            <ng-template #defaultBlogCover>
-                                <img src="assets/img/blog/blog-1-1.jpg" [alt]="item.title || 'Blog'">
-                            </ng-template>
-                        </a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="tp-blog-title-wrapper text-center mb-65">
+                        <span class="tp-section-title-pre">Nuestro BLOG</span>
+                        <h3 class="tp-section-title">Leer nuestro blog & post</h3>
                     </div>
+                </div>
+            </div>
 
-                    <div class="tp-blog-content">
-                        <div class="tp-blog-content-info">
-                            <span>{{ item.category || 'Blog' }}</span>
-                            <span>{{ formatBlogDate(item.created) }}</span>
-                        </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6" *ngFor="let item of blogList | slice:0:3; let i = index">
+                    <div class="tp-blog-item mb-30 wow fadeInUp" data-wow-duration="1s"
+                        [attr.data-wow-delay]="i === 0 ? '.3s' : i === 1 ? '.5s' : '.7s'">
 
-                        <h4 class="tp-blog-title">
+                        <div class="tp-blog-thumb">
                             <a routerLink="/blog">
-                                {{ item.title }}
-                            </a>
-                        </h4>
+                                <img *ngIf="getBlogCoverUrl(item) as coverUrl; else defaultBlogCover" [src]="coverUrl"
+                                    [alt]="item.title || 'Blog'">
 
-                        <div class="tp-blog-btn">
-                            <a class="tp-btn tp-icon-style" routerLink="/blog">
-                                Leer más
-                                <span>
-                                    <svg class="qodef-svg--custom-arrow qodef-m-arrow"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14.2"
-                                        height="14.2"
-                                        viewBox="0 0 14.2 14.2">
-                                        <g>
-                                            <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
-                                            <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
-                                        </g>
-                                        <g>
-                                            <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
-                                            <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
-                                        </g>
-                                    </svg>
-                                </span>
+                                <ng-template #defaultBlogCover>
+                                    <img src="assets/img/blog/blog-1-1.jpg" [alt]="item.title || 'Blog'">
+                                </ng-template>
                             </a>
                         </div>
-                    </div>
 
+                        <div class="tp-blog-content">
+                            <div class="tp-blog-content-info">
+                                <span>{{ item.category || 'Blog' }}</span>
+                                <span>{{ formatBlogDate(item.created) }}</span>
+                            </div>
+
+                            <h4 class="tp-blog-title">
+                                <a routerLink="/blog">
+                                    {{ item.title }}
+                                </a>
+                            </h4>
+
+                            <div class="tp-blog-btn">
+                                <a class="tp-btn tp-icon-style" routerLink="/blog">
+                                    Leer más
+                                    <span>
+                                        <svg class="qodef-svg--custom-arrow qodef-m-arrow"
+                                            xmlns="http://www.w3.org/2000/svg" width="14.2" height="14.2"
+                                            viewBox="0 0 14.2 14.2">
+                                            <g>
+                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                            </g>
+                                            <g>
+                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                                <path d="M13.2 9V1h-8M13.4.8.7 13.5"></path>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
     <!-- blog area end -->
 
 

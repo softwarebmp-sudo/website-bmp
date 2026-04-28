@@ -5,7 +5,8 @@
     "SERVICES": "Services",
     "PORTFOLIO": "Projects",
     "CONTACT": "Contact",
-    "BLOG": "Blog"
+    "BLOG": "Blog",
+    "ADMIN": "Admin"
 
   }
 }

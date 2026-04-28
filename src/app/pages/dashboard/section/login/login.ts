@@ -49,14 +49,18 @@ export class LoginComponent {
       if (email === 'admin@bmpcompany.com' && password === '123456') {
         localStorage.setItem('admin_session', 'true');
         localStorage.setItem('admin_role', 'admin');
-        this.router.navigate(['/admin/panel']);
+        this.router.navigate(['/admin/panel']).then(() => {
+          window.location.reload();
+        });
         return;
       }
 
       if (email === 'ingeniero@bmpcompany.com' && password === '123456') {
         localStorage.setItem('admin_session', 'true');
         localStorage.setItem('admin_role', 'engineer');
-        this.router.navigate(['/admin/panel']);
+        this.router.navigate(['/admin/panel']).then(() => {
+          window.location.reload();
+        });
         return;
       }
 

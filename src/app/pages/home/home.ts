@@ -47,7 +47,7 @@ loadingTestimonials = false;
     await this.loadServices();
     await this.loadPortfolio();
     await this.loadBlog();
-    await this.realtimeTestimonialsService.loadTestimonials();
+    await this.loadTestimonials();
 
   this.realtimeTestimonialsService.testimonials$.subscribe(data => {
     this.publishedTestimonials = data.filter(item => item.status === 'publicado');
@@ -113,7 +113,30 @@ loadingTestimonials = false;
     this.loadingBlog = false;
   }
 }
-  ngAfterViewInit(): void {
+async loadTestimonials(): Promise<void> {
+  try {
+    this.loadingTestimonials = true;
+
+    await this.realtimeTestimonialsService.loadTestimonials();
+
+    this.realtimeTestimonialsService.testimonials$.subscribe(data => {
+      this.publishedTestimonials = (data || [])
+        .filter(item => item.status === 'publicado')
+        .slice(0, 6);
+
+      this.cdr.detectChanges();
+
+      setTimeout(() => {
+        this.initTestimonialSlider();
+      }, 200);
+    });
+
+  } catch (error) {
+    console.error('Error cargando testimonios en home:', error);
+  } finally {
+    this.loadingTestimonials = false;
+  }
+}  ngAfterViewInit(): void {
     this.ngZone.runOutsideAngular(() => {
       window.requestAnimationFrame(() => {
         setTimeout(() => {

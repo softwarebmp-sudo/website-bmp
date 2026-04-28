@@ -31,8 +31,7 @@ export class Blog {
 
       this.realtimeBlogService.blog$.subscribe(data => {
         this.blogList = (data || [])
-          .filter(item => item.status === 'publicado')
-          .slice(0, 3);
+          .filter(item => item.status === 'publicado');
 
         this.cdr.detectChanges();
       });
