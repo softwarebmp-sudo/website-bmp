@@ -7,7 +7,7 @@ import { ServiceModel } from '../models/services.model';
   providedIn: 'root'
 })
 export class RealtimeServicesService {
-  private pb = new PocketBase('https://db.bmpsoftware.site:8090');
+  private pb = new PocketBase('https://db.bmpsoftware.site:8015');
   private collectionName = 'services_bmp';
 
   private servicesSubject = new BehaviorSubject<ServiceModel[]>([]);

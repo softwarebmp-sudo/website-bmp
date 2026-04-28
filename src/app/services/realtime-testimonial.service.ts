@@ -7,7 +7,7 @@ import { TestimonialModel } from '../models/testimonial.model';
   providedIn: 'root'
 })
 export class RealtimeTestimonialsService {
-  private pb = new PocketBase('https://db.bmpsoftware.site:8090');
+  private pb = new PocketBase('https://db.bmpsoftware.site:8015');
   private collectionName = 'testimonials_bmp';
 
   private testimonialsSubject = new BehaviorSubject<TestimonialModel[]>([]);

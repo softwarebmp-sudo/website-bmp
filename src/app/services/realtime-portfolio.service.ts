@@ -7,7 +7,7 @@ import { PortfolioModel } from '../models/portfolio.model';
   providedIn: 'root'
 })
 export class RealtimePortfolioService {
-  private pb = new PocketBase('https://db.bmpsoftware.site:8090');
+  private pb = new PocketBase('https://db.bmpsoftware.site:8015');
   private collectionName = 'portfolio_bmp';
 
   public portfolioSubject = new BehaviorSubject<PortfolioModel[]>([]);

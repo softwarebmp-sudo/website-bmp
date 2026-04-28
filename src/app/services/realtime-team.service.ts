@@ -7,7 +7,7 @@ import { TeamModel } from '../models/team.model';
   providedIn: 'root'
 })
 export class RealtimeTeamsService {
-  private pb = new PocketBase('https://db.bmpsoftware.site:8090');
+  private pb = new PocketBase('https://db.bmpsoftware.site:8015');
   private collectionName = 'teams_bmp';
 
   private teamsSubject = new BehaviorSubject<TeamModel[]>([]);

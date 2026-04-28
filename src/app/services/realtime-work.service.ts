@@ -7,7 +7,7 @@ import { WorkModel } from '../models/work.model';
   providedIn: 'root'
 })
 export class RealtimeWorksService {
-  private pb = new PocketBase('https://db.bmpsoftware.site:8090');
+  private pb = new PocketBase('https://db.bmpsoftware.site:8015');
   private collectionName = 'works_bmp';
 
   private worksSubject = new BehaviorSubject<WorkModel[]>([]);

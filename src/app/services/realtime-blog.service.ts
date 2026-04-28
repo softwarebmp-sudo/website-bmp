@@ -7,7 +7,7 @@ import { BlogModel } from '../models/blog.model';
   providedIn: 'root'
 })
 export class RealtimeBlogService {
-  private pb = new PocketBase('https://db.bmpsoftware.site:8090');
+  private pb = new PocketBase('https://db.bmpsoftware.site:8015');
   private collectionName = 'blog_bmp';
 
   private blogSubject = new BehaviorSubject<BlogModel[]>([]);
