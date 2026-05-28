@@ -12,11 +12,17 @@
             </div>
          </div>
          <div class="row">
-            <div class="col-lg-4 col-md-6" *ngFor="let service of servicesList">
+            <div class="col-lg-3 col-md-6" *ngFor="let service of servicesList">
                <div class="tp-pricing-item p-relative mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
                   <div class="shape-bg">
                      <img src="assets/img/counter/pricing-1-shape2.png" alt="">
                   </div>
+                  <div class="service-cover" *ngIf="getCoverUrl(service)">
+    <img
+      [src]="getCoverUrl(service)"
+      [alt]="service.name"
+    />
+  </div>
                   <div class="tp-pricing-head">
                      <h4 class="tp-pricing-tag">{{service.name}}</h4>
                      <span>{{service.description}}</span>
@@ -42,7 +48,7 @@
    </section>
    <!-- pricing area end -->
        <!-- contact area start -->
-    <section class="tp-contact-area p-relative fix pt-190 pb-200">
+    <!-- <section class="tp-contact-area p-relative fix pt-190 pb-200">
         <div class="tp-contact-bg" data-background="assets/img/contact/contact-1-bg.jpg"></div>
         <div class="container">
             <div class="row">
@@ -90,6 +96,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- contact area end -->
 </main>

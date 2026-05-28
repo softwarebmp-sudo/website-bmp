@@ -42,5 +42,9 @@ export class Services {
       this.loadingServices = false;
     }
   }
+  getCoverUrl(item: any): string | null {
+  if (!item?.cover) return null;
+  return this.realtimeServicesService.getFileUrl(item, item.cover);
+}
 
 }

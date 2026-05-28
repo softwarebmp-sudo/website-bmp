@@ -1160,6 +1160,7 @@ div.demo img {
   -ms-transition: all 0.3s 0s ease-out;
   -o-transition: all 0.3s 0s ease-out;
   transition: all 0.3s 0s ease-out;
+      border-radius: 20px;
 }
 .tp-btn span {
   display: inline-block;
@@ -3560,7 +3561,8 @@ div.demo img {
 }
 @media only screen and (min-width: 1400px) and (max-width: 1599px) {
   .tp-header-btn .tp-btn {
-    padding: 18px 40px;
+    padding: 5px 40px;
+    border-radius: 20px;
   }
 }
 .tp-header-contact-inner {
@@ -8556,6 +8558,7 @@ blockquote img {
   padding: 20px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 80px 0px rgba(0, 8, 21, 0.04);
+  border-radius: 20px;
 }
 .tp-offer-item:hover {
   background: var(--tp-theme-secondary);
@@ -11997,10 +12000,11 @@ blockquote img {
 /*  8.5 Pricing Css
 /*----------------------------------------*/
 .tp-pricing-item {
-  padding: 55px;
-  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  background-color: rgb(158 158 158 / 48%);
   box-shadow: 0px 6px 60px 0px rgba(30, 22, 22, 0.06);
   z-index: 1;
+  border-radius: 20px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .tp-pricing-item {
@@ -12101,6 +12105,7 @@ blockquote img {
 }
 .tp-pricing-btn .tp-btn {
   background: var(--tp-theme-secondary);
+  border-radius: 20px;
 }
 .tp-pricing-btn .tp-btn:hover {
   background: var(--tp-theme-primary);
@@ -15516,6 +15521,7 @@ blockquote img {
 
 .tp-btn.tp-color-btn {
   padding: 13px 33px;
+      border-radius: 20px;
 }
 
 @media (max-width: 767px) {
