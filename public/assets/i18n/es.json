@@ -7,5 +7,68 @@
     "CONTACT": "Contacto",
     "BLOG": "Blog",
     "ADMIN": "Admin"
+  },
+  "HOME": {
+    "HERO": {
+      "PRE_TITLE": "Soluciones de ingeniería que transforman espacios y potencian negocios",
+      "TITLE": "Diseño, implementación e integración de soluciones tecnológicas e infraestructura para empresas.",
+      "VIEW_PROJECTS": "Ver proyectos",
+      "CONTACT": "Contáctanos"
+    },
+    "ABOUT": {
+      "YEARS": "Años de experiencia",
+      "PRE_TITLE": "QUIÉNES SOMOS",
+      "TITLE": "BMP COMPANY",
+      "DESCRIPTION": "Somos una empresa de ingeniería que acompaña a nuestros clientes desde la planeación hasta la ejecución, integrando soluciones tecnológicas, infraestructura y consultoría para lograr resultados eficientes y sostenibles.",
+      "QUALITY": "Estándares de alta calidad",
+      "CERTIFIED": "Certificados ISO 9001",
+      "ITEM_1": "100% Satisfacción",
+      "ITEM_2": "Programas Anuales",
+      "ITEM_3": "Empleados capacitados",
+      "ITEM_4": "Flexible y rentable",
+      "BUTTON": "Descubrir Más"
+    },
+    "SERVICES": {
+      "PRE_TITLE": "LO QUE OFRECEMOS",
+      "TITLE": "Soluciones integrales para proyectos de ingeniería",
+      "DESCRIPTION": "Acompañamos a nuestros clientes con servicios especializados en diseño, instalación, integración, automatización e infraestructura técnica.",
+      "REQUEST": "Solicitar servicio"
+    },
+    "PORTFOLIO": {
+      "PRE_TITLE": "PROYECTOS DESTACADOS",
+      "TITLE": "Estructuras increíbles construidas por nosotros.",
+      "DESCRIPTION": "Conoce algunos de los proyectos donde aplicamos ingeniería, precisión técnica y soluciones integrales para nuestros clientes.",
+      "VIEW": "Ver proyecto"
+    },
+    "VALUE": {
+      "PRE_TITLE": "PROPUESTA DE VALOR",
+      "TITLE": "Construimos todo lo que necesitas primero",
+      "ITEM_1": "Experiencia comprobada",
+      "ITEM_2": "Soluciones a la medida",
+      "ITEM_3": "Ejecución integral",
+      "ITEM_4": "Enfoque en calidad y eficiencia",
+      "ITEM_5": "Presencia internacional",
+      "ITEM_6": "Flexible y rentable",
+      "ITEM_7": "Soluciones de emergencia",
+      "QUALITY": "Siempre brindamos servicio de alta calidad",
+      "DESIGN": "Nuestra prioridad es diseñar soluciones eficientes"
+    },
+    "TESTIMONIALS": {
+      "PRE_TITLE": "TESTIMONIOS",
+      "TITLE": "Lo que dicen nuestros clientes",
+      "DESCRIPTION": "La confianza de nuestros clientes respalda la calidad, cumplimiento y precisión con la que desarrollamos cada proyecto."
+    },
+    "CONTACT": {
+      "PRE_TITLE": "CONTÁCTANOS",
+      "TITLE": "¿Tienes un proyecto en mente?",
+      "BUTTON": "Contáctanos",
+      "QUOTE": "Solicitar cotización"
+    },
+    "BLOG": {
+      "PRE_TITLE": "Nuestro BLOG",
+      "TITLE": "Leer nuestro blog y publicaciones",
+      "READ_MORE": "Leer más"
+    }
   }
+
 }

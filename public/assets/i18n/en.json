@@ -8,5 +8,68 @@
     "BLOG": "Blog",
     "ADMIN": "Admin"
 
+  },
+  "HOME": {
+    "HERO": {
+      "PRE_TITLE": "Engineering solutions that transform spaces and empower businesses",
+      "TITLE": "Design, implementation and integration of technology and infrastructure solutions for companies.",
+      "VIEW_PROJECTS": "View projects",
+      "CONTACT": "Contact us"
+    },
+    "ABOUT": {
+      "YEARS": "Years of experience",
+      "PRE_TITLE": "WHO WE ARE",
+      "TITLE": "BMP COMPANY",
+      "DESCRIPTION": "We are an engineering company that supports clients from planning to execution, integrating technology solutions, infrastructure and consulting to achieve efficient and sustainable results.",
+      "QUALITY": "High quality standards",
+      "CERTIFIED": "ISO 9001 Certified",
+      "ITEM_1": "100% Satisfaction",
+      "ITEM_2": "Annual Programs",
+      "ITEM_3": "Trained employees",
+      "ITEM_4": "Flexible and cost-effective",
+      "BUTTON": "Discover More"
+    },
+    "SERVICES": {
+      "PRE_TITLE": "WHAT WE OFFER",
+      "TITLE": "Comprehensive solutions for engineering projects",
+      "DESCRIPTION": "We support our clients with specialized services in design, installation, integration, automation and technical infrastructure.",
+      "REQUEST": "Request service"
+    },
+    "PORTFOLIO": {
+      "PRE_TITLE": "FEATURED PROJECTS",
+      "TITLE": "Incredible structures built by us.",
+      "DESCRIPTION": "Discover some of the projects where we apply engineering, technical precision and comprehensive solutions for our clients.",
+      "VIEW": "View project"
+    },
+    "VALUE": {
+      "PRE_TITLE": "VALUE PROPOSITION",
+      "TITLE": "We build everything you need first",
+      "ITEM_1": "Proven experience",
+      "ITEM_2": "Tailor-made solutions",
+      "ITEM_3": "End-to-end execution",
+      "ITEM_4": "Focus on quality and efficiency",
+      "ITEM_5": "International presence",
+      "ITEM_6": "Flexible and cost-effective",
+      "ITEM_7": "Emergency solutions",
+      "QUALITY": "We always provide high-quality service",
+      "DESIGN": "Our priority is to design efficient solutions"
+    },
+    "TESTIMONIALS": {
+      "PRE_TITLE": "TESTIMONIALS",
+      "TITLE": "What our clients say",
+      "DESCRIPTION": "Our clients’ trust supports the quality, compliance and precision with which we develop every project."
+    },
+    "CONTACT": {
+      "PRE_TITLE": "CONTACT US",
+      "TITLE": "Do you have a project in mind?",
+      "BUTTON": "Contact us",
+      "QUOTE": "Request a quote"
+    },
+    "BLOG": {
+      "PRE_TITLE": "Our BLOG",
+      "TITLE": "Read our blog and posts",
+      "READ_MORE": "Read more"
+    }
   }
+
 }

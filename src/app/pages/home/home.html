@@ -20,12 +20,12 @@
                                         <div class="tp-hero-content p-relative">
                                             <div class="tp-hero-title-wrapper">
                                                 <div class="tp-hero-title-pre">
-                                                    <div><span>“Soluciones de ingeniería que transforman espacios y
-                                                            potencian negocios”</span></div>
+                                                    <div>
+                                                        <span>{{ 'HOME.HERO.PRE_TITLE' | translate }}</span>
+                                                    </div>
                                                 </div>
                                                 <div class="tp-hero-title">
-                                                    <div><span>Diseño, implementación e integración de soluciones
-                                                            tecnológicas e infraestructura para empresas.</span></div>
+                                                    <div><span>  {{ 'HOME.HERO.TITLE' | translate }}</span></div>
                                                 </div>
                                             </div>
 
@@ -33,7 +33,7 @@
                                                 <div class="tp-hero-button-wrapper d-flex flex-wrap align-items-center">
                                                     <div class="tp-hero-btn">
                                                         <a class="tp-btn tp-icon-style" [routerLink]="['/portfolio']">
-                                                            Ver proyectos
+                                                            {{ 'HOME.HERO.VIEW_PROJECTS' | translate }} 
                                                             <span>
                                                                 <svg class="qodef-svg--custom-arrow qodef-m-arrow"
                                                                     xmlns="http://www.w3.org/2000/svg" width="14.2"
@@ -53,7 +53,7 @@
 
                                                     <div class="tp-hero-btn style-2">
                                                         <a class="tp-btn tp-icon-style" routerLink="/contact">
-                                                            Contáctanos
+                                                            {{ 'HOME.HERO.CONTACT' | translate }} 
                                                             <span>
                                                                 <svg class="qodef-svg--custom-arrow qodef-m-arrow"
                                                                     xmlns="http://www.w3.org/2000/svg" width="14.2"
@@ -115,7 +115,7 @@
                         <div class="tp-about-title-wrapper">
                             <span class="tp-section-title-pre">QUIÉNES SOMOS</span>
                             <h3 class="tp-section-title">BMP <br> COMPANY</h3>
-                            <p>Somos una empresa de ingeniería que acompaña a nuestros clientes
+                            <p style="color: black;">Somos una empresa de ingeniería que acompaña a nuestros clientes
                                 desde la planeación hasta la ejecución, integrando soluciones
                                 tecnológicas, infraestructura y consultoría para lograr resultados
                                 eficientes y sostenibles.</p>

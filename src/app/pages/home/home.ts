@@ -9,6 +9,7 @@ import { BlogModel } from '../../models/blog.model';
 import { RealtimeBlogService } from '../../services/realtime-blog.service';
 import { TestimonialModel } from '../../models/testimonial.model';
 import { RealtimeTestimonialsService } from '../../services/realtime-testimonial.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 declare var Swiper: any;
 declare var WOW: any;
@@ -17,7 +18,7 @@ declare var $: any;
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, TranslateModule],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -348,5 +349,14 @@ formatBlogDate(dateValue: string | undefined): string {
     month: 'long',
     day: 'numeric'
   });
+}
+getTranslatedField(item: any, field: string): string {
+  const lang = localStorage.getItem('lang') || 'es';
+
+  if (lang === 'en') {
+    return item?.[`${field}_en`] || item?.[field] || '';
+  }
+
+  return item?.[field] || '';
 }
 }
