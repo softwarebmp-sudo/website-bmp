@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, HostListener, Output, OnInit } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { Router, RouterLink } from "@angular/router";
+import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, TranslatePipe, RouterLink],
+  imports: [CommonModule, TranslatePipe, RouterLink, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
@@ -67,15 +67,28 @@ export class Header implements OnInit {
     this.isLangOpen = false;
   }
 
-  toggleLang(event: Event) {
+ /*  toggleLang(event: Event) {
     event.stopPropagation();
     this.isLangOpen = !this.isLangOpen;
   }
-
   changeLang(lang: string) {
     this.setLang(lang);
     this.isLangOpen = false;
-  }
+  } */
+toggleLang(event: Event) {
+  event.preventDefault();
+  event.stopPropagation();
+  this.isLangOpen = !this.isLangOpen;
+}
+
+changeLang(lang: string, event?: Event) {
+  event?.preventDefault();
+  event?.stopPropagation();
+
+  this.setLang(lang);
+  this.isLangOpen = false;
+}
+  
 
   setLang(lang: string) {
     this.currentLang = lang;

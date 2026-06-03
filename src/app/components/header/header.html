@@ -18,8 +18,6 @@
                             <div class="tp-header-top-social">
                                 <a href="index.html#"><i class="fa-brands fa-facebook-f"></i></a>
                                 <a href="index.html#"><i class="fa-brands fa-instagram"></i></a>
-                                <a href="index.html#"><i class="fa-brands fa-tiktok"></i></a>
-                                <a href="index.html#"><i class="fa-brands fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
@@ -43,28 +41,46 @@
                             <nav class="tp-main-menu-content">
                                 <ul>
                                     <li>
-                                        <a routerLink="/home">{{ 'MENU.HOME' | translate }}</a>
+                                        <a routerLink="/home" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: true }">
+                                            {{ 'MENU.HOME' | translate }}
+                                        </a>
+                                    </li>
 
-                                    </li>
                                     <li>
-                                        <a routerLink="/about">{{ 'MENU.ABOUT' | translate }}</a>
+                                        <a routerLink="/about" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: true }">
+                                            {{ 'MENU.ABOUT' | translate }}
+                                        </a>
+                                    </li>
 
-                                    </li>
                                     <li>
-                                        <a routerLink="/services">{{ 'MENU.SERVICES' | translate }}</a>
-                                        <ul class="submenu">
-                                            <li><a routerLink="/services">Servicio</a></li>
-                                        </ul>
+                                        <a routerLink="/services" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: false }">
+                                            {{ 'MENU.SERVICES' | translate }}
+                                        </a>
                                     </li>
-                                    <li>
-                                        <a routerLink="/portfolio">{{ 'MENU.PROJECTS' | translate }}</a>
 
-                                    </li>
                                     <li>
-                                        <a routerLink="/blog">{{ 'MENU.BLOG' | translate }}</a>
-
+                                        <a routerLink="/portfolio" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: false }">
+                                            {{ 'MENU.PROJECTS' | translate }}
+                                        </a>
                                     </li>
-                                    <li><a routerLink="/contact">{{ 'MENU.CONTACT' | translate }}</a></li>
+
+                                    <li>
+                                        <a routerLink="/blog" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: false }">
+                                            {{ 'MENU.BLOG' | translate }}
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a routerLink="/contact" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: true }">
+                                            {{ 'MENU.CONTACT' | translate }}
+                                        </a>
+                                    </li>
                                     <li *ngIf="isLoggedIn">
                                         <a routerLink="/admin/panel">{{ 'MENU.ADMIN' | translate }}</a>
                                     </li>
@@ -104,9 +120,9 @@
                                     </div>
                                 </div>
 
-                                
 
-<div class="admin-user-wrapper d-none d-xxl-flex align-items-center">
+
+                                <div class="admin-user-wrapper d-none d-xxl-flex align-items-center">
                                     <!-- NO logueado -->
                                     <button *ngIf="!isLoggedIn" type="button" class="icon-btn" (click)="goToAdmin()">
                                         <i class="fa-sharp fa-light fa-user"></i>
@@ -147,12 +163,42 @@
                         </div>
 
                         <!-- mobile -->
-                        <div class="tp-header-hamburger d-flex d-lg-none">
+                        <!-- <div class="tp-header-hamburger d-flex d-lg-none">
                             <button type="button" class="hamburger-btn" (click)="openOffcanvas()">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </button>
+                        </div> -->
+                        <div class="mobile-actions d-flex d-lg-none align-items-center">
+
+                            <div class="lang-dropdown mobile-lang-dropdown" [class.open]="isLangOpen"
+                                (click)="$event.stopPropagation()">
+                                <button type="button" (click)="toggleLang($event)">
+                                    <img [src]="currentFlag" alt="lang">
+                                    <span>{{ currentLang.toUpperCase() }}</span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+
+                                <div class="lang-options">
+                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('es', $event)">
+                                        <img src="https://flagcdn.com/w20/co.png" alt="ES">
+                                        <span>Español</span>
+                                    </a>
+
+                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('en', $event)">
+                                        <img src="https://flagcdn.com/w20/us.png" alt="EN">
+                                        <span>English</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <button type="button" class="hamburger-btn" (click)="openOffcanvas()">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+
                         </div>
 
                     </div>
@@ -177,31 +223,48 @@
                         <div class="tp-main-menu d-none d-xl-block">
                             <nav class="tp-main-menu-content">
                                 <ul>
-                                    <li >
-                                        <a routerLink="home">{{ 'MENU.HOME' | translate }}</a>
-
-                                    </li>
-                                    <li >
-                                        <a routerLink="about">{{ 'MENU.ABOUT' | translate }}</a>
-
-                                    </li>
-                                    <li >
-                                        <a routerLink="service">{{ 'MENU.SERVICES' | translate }}</a>
-                                        <ul class="submenu">
-                                            <li><a routerLink="service">Servicio</a></li>
-                                        </ul>
-                                    </li>
-                                    <li >
-                                        <a routerLink="portfolio">{{ 'MENU.PROJECTS' | translate }}</a>
-
+                                    <li>
+                                        <a routerLink="/home" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: true }">
+                                            {{ 'MENU.HOME' | translate }}
+                                        </a>
                                     </li>
 
-                                    <li >
-                                        <a routerLink="blog">{{ 'MENU.BLOG' | translate }}</a>
-
+                                    <li>
+                                        <a routerLink="/about" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: true }">
+                                            {{ 'MENU.ABOUT' | translate }}
+                                        </a>
                                     </li>
-                                    <li><a>{{ 'MENU.CONTACT' | translate }}</a></li>
-                                    <li *ngIf="isLoggedIn"><a routerLink="admin/panel">{{ 'MENU.ADMIN' | translate
+
+                                    <li>
+                                        <a routerLink="/services" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: false }">
+                                            {{ 'MENU.SERVICES' | translate }}
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a routerLink="/portfolio" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: false }">
+                                            {{ 'MENU.PROJECTS' | translate }}
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a routerLink="/blog" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: false }">
+                                            {{ 'MENU.BLOG' | translate }}
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a routerLink="/contact" routerLinkActive="active-menu"
+                                            [routerLinkActiveOptions]="{ exact: true }">
+                                            {{ 'MENU.CONTACT' | translate }}
+                                        </a>
+                                    </li>
+                                    <li *ngIf="isLoggedIn"><a routerLink="/admin/panel">{{ 'MENU.ADMIN' | translate
                                             }}</a></li>
                                 </ul>
                             </nav>
@@ -239,7 +302,7 @@
                                     </div>
                                 </div>
 
-                              
+
 
                                 <div class="tp-header-icon d-none d-xxl-flex align-items-center">
 
@@ -282,13 +345,43 @@
                         </div>
 
                         <!-- Botón mobile -->
-                        <div class="tp-header-hamburger d-flex d-lg-none">
+                        <!-- <div class="tp-header-hamburger d-flex d-lg-none">
                             <button type="button" class="hamburger-btn" (click)="openOffcanvas()">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </button>
+                        </div> -->
+                        <div class="mobile-actions d-flex d-lg-none align-items-center">
+
+                            <div class="lang-dropdown mobile-lang-dropdown" [class.open]="isLangOpen">
+                                <button type="button" (click)="toggleLang($event)">
+                                    <img [src]="currentFlag" alt="lang">
+                                    <span>{{ currentLang.toUpperCase() }}</span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+
+                                <div class="lang-options">
+                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('es')">
+                                        <img src="https://flagcdn.com/w20/co.png" alt="ES">
+                                        <span>Español</span>
+                                    </a>
+
+                                    <a class="lang-option" href="javascript:void(0)" (click)="changeLang('en')">
+                                        <img src="https://flagcdn.com/w20/us.png" alt="EN">
+                                        <span>English</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <button type="button" class="hamburger-btn" (click)="openOffcanvas()">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+
                         </div>
+
 
                     </div>
                 </div>
@@ -318,8 +411,8 @@
                     <li><a routerLink="/portfolio" (click)="closeOffcanvas()">Proyectos</a></li>
                     <li><a routerLink="/blog" (click)="closeOffcanvas()">Blog</a></li>
                     <li><a routerLink="/contact" (click)="closeOffcanvas()">Contacto</a></li>
-                    <li *ngIf="isLoggedIn"><a routerLink="admin/panel" (click)="closeOffcanvas()">Panel Admin</a></li>
-                    <li *ngIf="!isLoggedIn"><a routerLink="admin/login" (click)="closeOffcanvas()">Iniciar Sesión</a>
+                    <li *ngIf="isLoggedIn"><a routerLink="/admin/panel" (click)="closeOffcanvas()">Panel Admin</a></li>
+                    <li *ngIf="!isLoggedIn"><a routerLink="/admin/login" (click)="closeOffcanvas()">Iniciar Sesión</a>
                     </li>
                 </ul>
             </nav>
