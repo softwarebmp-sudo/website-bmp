@@ -17,4 +17,6 @@ export interface TeamModel {
   linkedin?: string;
   instagram?: string;
   email?: string;
+  position?: string;
+  description?: string;
 }

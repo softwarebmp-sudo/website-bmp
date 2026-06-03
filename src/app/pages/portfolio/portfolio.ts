@@ -17,38 +17,79 @@ import { TranslateModule } from '@ngx-translate/core';
 export class Portfolio {
 
   portfolioList: PortfolioModel[] = [];
-loadingPortfolio = false;
+  filteredPortfolioList: PortfolioModel[] = [];
 
-constructor(private ngZone: NgZone, public router: Router,
-  private cdr: ChangeDetectorRef,
-  public realtimePortfolioService: RealtimePortfolioService
-) { }
+  portfolioTypes: string[] = [];
+  activeFilter = 'all';
 
-async ngOnInit(): Promise<void> {
-  await this.loadPortfolio();
-}
-async loadPortfolio(): Promise<void> {
-  try {
-    this.loadingPortfolio = true;
+  loadingPortfolio = false;
 
-    await this.realtimePortfolioService.loadPortfolio();
+  constructor(
+    private ngZone: NgZone,
+    public router: Router,
+    private cdr: ChangeDetectorRef,
+    public realtimePortfolioService: RealtimePortfolioService
+  ) { }
 
-    this.realtimePortfolioService.portfolio$.subscribe(data => {
-      this.portfolioList = (data || [])
-        .filter(item => item.status === 'publicado')
-        .slice(0, 3);
-
-      this.cdr.detectChanges();
-    });
-  } catch (error) {
-    console.error('Error cargando portfolio en home:', error);
-  } finally {
-    this.loadingPortfolio = false;
+  async ngOnInit(): Promise<void> {
+    await this.loadPortfolio();
   }
-}
-getPortfolioCoverUrl(item: any): string | null {
-  if (!item?.cover) return null;
-  return this.realtimePortfolioService.getFileUrl(item, item.cover);
-}
 
+  async loadPortfolio(): Promise<void> {
+    try {
+      this.loadingPortfolio = true;
+
+      await this.realtimePortfolioService.loadPortfolio();
+
+      this.realtimePortfolioService.portfolio$.subscribe(data => {
+        this.portfolioList = (data || [])
+          .filter(item => item.status === 'publicado')
+          .sort((a: any, b: any) => (a.orderIndex ?? 0) - (b.orderIndex ?? 0));
+
+        this.filteredPortfolioList = [...this.portfolioList];
+
+        this.portfolioTypes = [
+          ...new Set(
+            this.portfolioList
+              .map((item: any) => item.type)
+              .filter(Boolean)
+          )
+        ];
+
+        this.cdr.detectChanges();
+      });
+
+    } catch (error) {
+      console.error('Error cargando portfolio:', error);
+    } finally {
+      this.loadingPortfolio = false;
+    }
+  }
+
+  filterPortfolio(type: string): void {
+    this.activeFilter = type;
+
+    if (type === 'all') {
+      this.filteredPortfolioList = [...this.portfolioList];
+      return;
+    }
+
+    this.filteredPortfolioList = this.portfolioList.filter(
+      (item: any) => item.type === type
+    );
+  }
+
+  getPortfolioCoverUrl(item: any): string {
+    if (!item?.cover) return 'assets/img/project/default-project.jpg';
+    return this.realtimePortfolioService.getFileUrl(item, item.cover);
+  }
+
+  formatFilterName(value: string): string {
+    if (!value) return '';
+
+    return value
+      .replaceAll('-', ' ')
+      .replaceAll('_', ' ')
+      .replace(/\b\w/g, letter => letter.toUpperCase());
+  }
 }

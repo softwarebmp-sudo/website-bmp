@@ -1,61 +1,124 @@
-<section class="tp-project-details-area pt-120 pb-120" *ngIf="!loading && project; else loadingOrEmpty">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="tp-project-details-thumb mb-50">
-          <img [src]="getProjectCoverUrl()" [alt]="project.name" class="w-100">
-        </div>
-      </div>
-    </div>
+<section class="bmp-project-detail" *ngIf="!loading && project; else loadingOrEmpty">
 
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="tp-project-details-content">
-          <span class="tp-project-details-category">{{ project.category }}</span>
-          <h2 class="tp-project-details-title mb-20">{{ project.name }}</h2>
+  <div class="bmp-project-hero">
+    <img [src]="getProjectCoverUrl()" [alt]="project.name">
 
-          <p *ngIf="project.description">
-            {{ project.description }}
-          </p>
+    <div class="bmp-project-hero-overlay"></div>
 
-          <p *ngIf="!project.description">
-            Este proyecto no tiene descripción registrada todavía.
-          </p>
-        </div>
-      </div>
+    <div class="container">
+      <div class="bmp-project-hero-content">
+        <span>{{ project.category || formatValue(project.type) }}</span>
 
-      <div class="col-lg-4">
-        <div class="tp-project-details-sidebar">
-          <div class="tp-project-details-info-box mb-30">
-            <h4>Información del proyecto</h4>
+        <h1>{{ project.name }}</h1>
 
-            <ul class="list-unstyled">
-              <li *ngIf="project.category">
-                <strong>Categoría:</strong> {{ project.category }}
-              </li>
-
-              <li *ngIf="project.created">
-                <strong>Fecha:</strong> {{ project.created | date:'mediumDate' }}
-              </li>
-
-              <li *ngIf="project.status">
-                <strong>Estado:</strong> {{ project.status }}
-              </li>
-            </ul>
-          </div>
-
-          <button class="tp-btn" (click)="goBack()">
-            Volver al portafolio
-          </button>
-        </div>
+        <p *ngIf="project.description">
+          {{ project.description }}
+        </p>
       </div>
     </div>
   </div>
+
+  <div class="container">
+
+    <div class="bmp-project-layout">
+
+      <main class="bmp-project-main">
+
+        <section class="bmp-project-section" *ngIf="project.description">
+          <span>DESCRIPCIÓN</span>
+          <h2>Resumen del proyecto</h2>
+          <p>{{ project.description }}</p>
+        </section>
+
+        <section class="bmp-project-section" *ngIf="project.clientProblem">
+          <span>RETO</span>
+          <h2>Problema del cliente</h2>
+          <p>{{ project.clientProblem }}</p>
+        </section>
+
+        <section class="bmp-project-section" *ngIf="project.implementedSolution">
+          <span>SOLUCIÓN</span>
+          <h2>Solución implementada</h2>
+          <p>{{ project.implementedSolution }}</p>
+        </section>
+
+        <section class="bmp-project-section" *ngIf="project.result">
+          <span>RESULTADO</span>
+          <h2>Resultado obtenido</h2>
+          <p>{{ project.result }}</p>
+        </section>
+
+        <section class="bmp-project-gallery" *ngIf="getProjectGalleryUrls().length">
+          <div class="bmp-project-gallery-head">
+            <span>GALERÍA</span>
+            <h2>Imágenes del proyecto</h2>
+          </div>
+
+          <div class="bmp-gallery-grid">
+            <a
+              class="bmp-gallery-item"
+              *ngFor="let image of getProjectGalleryUrls()"
+              [href]="image"
+              target="_blank">
+
+              <img [src]="image" [alt]="project.name">
+            </a>
+          </div>
+        </section>
+
+      </main>
+
+      <aside class="bmp-project-sidebar">
+
+        <div class="bmp-project-info-card">
+          <h4>Información del proyecto</h4>
+
+          <ul>
+            <li *ngIf="project.category">
+              <span>Categoría</span>
+              <strong>{{ project.category }}</strong>
+            </li>
+
+            <li *ngIf="project.type">
+              <span>Tipo</span>
+              <strong>{{ formatValue(project.type) }}</strong>
+            </li>
+
+            <li *ngIf="project.location">
+              <span>Ubicación</span>
+              <strong>{{ project.location }}</strong>
+            </li>
+
+            <li *ngIf="project.year">
+              <span>Año</span>
+              <strong>{{ project.year }}</strong>
+            </li>
+
+            <li *ngIf="project.featured !== undefined">
+              <span>Destacado</span>
+              <strong>{{ project.featured ? 'Sí' : 'No' }}</strong>
+            </li>
+
+            
+          </ul>
+        </div>
+
+        <button class="bmp-back-btn" type="button" (click)="goBack()">
+          Volver al portafolio
+        </button>
+
+      </aside>
+
+    </div>
+
+  </div>
+
 </section>
 
 <ng-template #loadingOrEmpty>
-  <section class="pt-120 pb-120">
+  <section class="bmp-project-empty">
     <div class="container text-center">
+
       <div *ngIf="loading">
         <h4>Cargando proyecto...</h4>
       </div>
@@ -63,8 +126,12 @@
       <div *ngIf="!loading && !project">
         <h4>Proyecto no encontrado</h4>
         <p>El proyecto que buscas no existe o no está publicado.</p>
-        <button class="tp-btn" (click)="goBack()">Volver</button>
+
+        <button class="bmp-back-btn" type="button" (click)="goBack()">
+          Volver
+        </button>
       </div>
+
     </div>
   </section>
 </ng-template>

@@ -1,40 +1,65 @@
-<section class="tp-project-area tp-project-bottom-color p-relative pt-120 pb-90">
+<section class="bmp-portfolio-section">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="tp-project-tab-button masonary-menu flex-wrap mb-70">
-          <button class="active" data-filter="*"><span>Show all</span></button>
-          <button data-filter=".cat2"><span>Architecture</span></button>
-          <button data-filter=".cat3"><span>Interior design</span></button>
-          <button data-filter=".cat4"><span>Residance</span></button>
-        </div>
+
+    <div class="bmp-portfolio-header">
+      <div>
+        <span class="tp-section-title-pre">PORTAFOLIO</span>
+        <h3 class="tp-section-title">Proyectos que reflejan nuestra experiencia</h3>
       </div>
+
+      <p>
+        Soluciones desarrolladas con precisión técnica, diseño funcional y ejecución profesional
+        para diferentes sectores.
+      </p>
     </div>
 
-    <div class="row grid">
-      <div class="col-lg-4 col-md-6 grid-item cat2 cat4 cat5" *ngFor="let portfolio of portfolioList">
-        <div class="tp-project-item p-relative fix mb-30">
-          <div class="tp-project-thumb p-relative fix">
-            <a [routerLink]="['/portfolio', portfolio.id]">
-              <img [src]="getPortfolioCoverUrl(portfolio)" [alt]="portfolio.name">
-            </a>
-          </div>
+    <div class="bmp-portfolio-filters" *ngIf="portfolioTypes.length">
+      <button
+        type="button"
+        [class.active]="activeFilter === 'all'"
+        (click)="filterPortfolio('all')">
+        Todos
+      </button>
 
-          <div class="tp-project-item-content p-relative">
-            <span>{{ portfolio.category }}</span>
-            <h4 class="tp-project-item-title">
-              <a [routerLink]="['/portfolio', portfolio.id]">{{ portfolio.name }}</a>
-            </h4>
-            <div class="tp-project-item-btn">
+      <button
+        type="button"
+        *ngFor="let type of portfolioTypes"
+        [class.active]="activeFilter === type"
+        (click)="filterPortfolio(type)">
+        {{ formatFilterName(type) }}
+      </button>
+    </div>
+
+    <div class="bmp-portfolio-loading" *ngIf="loadingPortfolio">
+      Cargando proyectos...
+    </div>
+
+    <div class="bmp-portfolio-grid" *ngIf="!loadingPortfolio">
+      <article
+        class="bmp-portfolio-card"
+        *ngFor="let portfolio of filteredPortfolioList">
+
+        <a [routerLink]="['/portfolio', portfolio.id]" class="bmp-portfolio-image">
+          <img [src]="getPortfolioCoverUrl(portfolio)" [alt]="portfolio.name">
+        </a>
+
+        <div class="bmp-portfolio-content">
+          <div>
+            <span>{{ portfolio.category || formatFilterName(portfolio.type) }}</span>
+            <h4>
               <a [routerLink]="['/portfolio', portfolio.id]">
-                <span>
-                  <i class="fa-regular fa-plus"></i>
-                </span>
+                {{ portfolio.name }}
               </a>
-            </div>
+            </h4>
           </div>
+
+          <a [routerLink]="['/portfolio', portfolio.id]" class="bmp-portfolio-btn">
+            <i class="fa-regular fa-plus"></i>
+          </a>
         </div>
-      </div>
+
+      </article>
     </div>
+
   </div>
 </section>

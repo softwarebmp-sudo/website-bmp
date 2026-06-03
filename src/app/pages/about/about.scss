@@ -170,3 +170,373 @@
     padding: 7px 12px;
   }
 }
+.bmp-about-section {
+  padding: 110px 0;
+  background:
+    linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.bmp-about-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.bmp-about-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 420px;
+  background: #fff;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(10, 32, 80, 0.12);
+  position: relative;
+}
+
+.bmp-about-card::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(12, 45, 110, 0.08);
+  border-radius: 22px;
+  pointer-events: none;
+}
+
+.bmp-about-card.reverse .bmp-about-img {
+  order: 2;
+}
+
+.bmp-about-img {
+  height: 100%;
+  min-height: 420px;
+  position: relative;
+}
+
+.bmp-about-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10, 43, 101, 0.25), transparent);
+}
+
+.bmp-about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bmp-about-content {
+  padding: 70px;
+  position: relative;
+  z-index: 2;
+}
+
+.bmp-about-content span {
+  display: inline-block;
+  color: #ff6b00;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.bmp-about-content h2 {
+  color: #0b2d6f;
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 800;
+  line-height: 0.95;
+  margin-bottom: 28px;
+}
+
+.bmp-about-content p {
+  color: #51617d;
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+@media (max-width: 991px) {
+  .bmp-about-section {
+    padding: 70px 0;
+  }
+
+  .bmp-about-card,
+  .bmp-about-card.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .bmp-about-card.reverse .bmp-about-img {
+    order: 0;
+  }
+
+  .bmp-about-img {
+    min-height: 260px;
+  }
+
+  .bmp-about-content {
+    padding: 38px 28px;
+  }
+}
+.bmp-team-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f5f8fc 100%);
+  overflow: hidden;
+}
+
+.bmp-team-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 35px 0 25px;
+
+  button {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    background: #0b2d6f;
+    color: #fff;
+    font-size: 20px;
+    display: grid;
+    place-items: center;
+    transition: 0.3s ease;
+
+    &:hover {
+      background: #ff6b00;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+.bmp-team-carousel {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 15px 4px 35px;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.bmp-team-card {
+  min-width: 320px;
+  max-width: 320px;
+  background: #fff;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(10, 32, 80, 0.12);
+  position: relative;
+  transition: 0.35s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(10, 32, 80, 0.18);
+  }
+}
+
+.bmp-team-image {
+  height: 340px;
+  background: #e9eef6;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 45%,
+      rgba(11, 45, 111, 0.75) 100%
+    );
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+}
+
+.bmp-team-info {
+  padding: 28px;
+  min-height: 210px;
+
+  span {
+    display: inline-block;
+    color: #ff6b00;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    color: #0b2d6f;
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+
+  h5 {
+    color: #ff6b00;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  p {
+    color: #596983;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+  }
+}
+
+.bmp-team-empty {
+  text-align: center;
+  padding: 50px 20px;
+  color: #596983;
+}
+
+@media (max-width: 768px) {
+  .bmp-team-controls {
+    justify-content: flex-start;
+  }
+
+  .bmp-team-card {
+    min-width: 280px;
+    max-width: 280px;
+  }
+
+  .bmp-team-image {
+    height: 300px;
+  }
+
+  .tp-team-title-wrapper {
+    text-align: left !important;
+  }
+}
+.bmp-story-section {
+  width: 100%;
+  background: #fff;
+}
+
+.bmp-story-panel {
+  min-height: 420px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.bmp-story-panel img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bmp-story-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 24, 61, 0.96) 0%,
+    rgba(4, 24, 61, 0.82) 34%,
+    rgba(4, 24, 61, 0.28) 68%,
+    rgba(4, 24, 61, 0.05) 100%
+  );
+}
+
+.bmp-story-content {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+  margin-left: 9%;
+  color: #fff;
+}
+
+.bmp-story-content.right {
+  margin-left: auto;
+  margin-right: 9%;
+  color: #0b2d6f;
+}
+
+.bmp-story-content span {
+  display: inline-block;
+  color: #ff6b00;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 18px;
+}
+
+.bmp-story-content h2 {
+  font-size: clamp(46px, 6vw, 78px);
+  line-height: 0.95;
+  font-weight: 900;
+  margin-bottom: 28px;
+}
+
+.bmp-story-content p {
+  font-size: 18px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.bmp-story-panel.light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.25) 45%,
+    rgba(255, 255, 255, 0.96) 68%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  z-index: 1;
+}
+
+.bmp-story-panel + .bmp-story-panel {
+  border-top: 4px solid #fff;
+}
+
+@media (max-width: 768px) {
+  .bmp-story-panel {
+    min-height: 520px;
+    align-items: flex-end;
+    padding: 40px 24px;
+  }
+
+  .bmp-story-overlay,
+  .bmp-story-panel.light::before {
+    background: linear-gradient(
+      180deg,
+      rgba(4, 24, 61, 0.1) 0%,
+      rgba(4, 24, 61, 0.92) 100%
+    );
+  }
+
+  .bmp-story-content,
+  .bmp-story-content.right {
+    margin: 0;
+    color: #fff;
+  }
+
+  .bmp-story-content h2 {
+    font-size: 44px;
+  }
+
+  .bmp-story-content p {
+    font-size: 16px;
+  }
+}

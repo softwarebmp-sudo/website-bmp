@@ -56,4 +56,20 @@ export class ProjectDetails implements OnInit {
   goBack(): void {
     this.router.navigate(['/portfolio']);
   }
+  getProjectGalleryUrls(): string[] {
+  if (!this.project?.gallery?.length) return [];
+
+  return this.project.gallery.map((fileName: string) =>
+    this.realtimePortfolioService.getFileUrl(this.project, fileName)
+  );
+}
+
+formatValue(value: string): string {
+  if (!value) return '';
+
+  return value
+    .replaceAll('-', ' ')
+    .replaceAll('_', ' ')
+    .replace(/\b\w/g, letter => letter.toUpperCase());
+}
 }

@@ -1,0 +1,283 @@
+.bmp-project-detail {
+  background: #fff;
+}
+
+.bmp-project-hero {
+  min-height: 560px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.bmp-project-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 24, 61, 0.96) 0%,
+    rgba(4, 24, 61, 0.82) 38%,
+    rgba(4, 24, 61, 0.25) 72%,
+    rgba(4, 24, 61, 0.05) 100%
+  );
+}
+
+.bmp-project-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  padding: 0 0 90px;
+  color: #fff;
+
+  span {
+    display: inline-block;
+    color: #ff6b00;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    color: #fff;
+    font-size: clamp(46px, 7vw, 86px);
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: 24px;
+  }
+
+  p {
+    max-width: 650px;
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 0;
+  }
+}
+
+.bmp-project-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 50px;
+  padding: 90px 0 120px;
+}
+
+.bmp-project-main {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.bmp-project-section {
+  background: #fff;
+  border: 1px solid rgba(11, 45, 111, 0.08);
+  border-radius: 26px;
+  padding: 42px;
+  box-shadow: 0 20px 60px rgba(10, 32, 80, 0.08);
+
+  span {
+    display: inline-block;
+    color: #ff6b00;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    color: #0b2d6f;
+    font-size: 34px;
+    font-weight: 850;
+    margin-bottom: 18px;
+  }
+
+  p {
+    color: #596983;
+    font-size: 17px;
+    line-height: 1.85;
+    margin: 0;
+  }
+}
+
+.bmp-project-sidebar {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+
+.bmp-project-info-card {
+  background: #0b2d6f;
+  color: #fff;
+  border-radius: 26px;
+  padding: 34px;
+  box-shadow: 0 24px 70px rgba(10, 32, 80, 0.18);
+
+  h4 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 850;
+    margin-bottom: 24px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    padding: 17px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    span {
+      display: block;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    strong {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+    }
+  }
+}
+
+.bmp-back-btn {
+  width: 100%;
+  border: none;
+  margin-top: 22px;
+  padding: 16px 24px;
+  border-radius: 999px;
+  background: #ff6b00;
+  color: #fff;
+  font-weight: 800;
+  transition: 0.3s ease;
+
+  &:hover {
+    background: #0b2d6f;
+    transform: translateY(-2px);
+  }
+}
+
+.bmp-project-gallery {
+  margin-top: 20px;
+}
+
+.bmp-project-gallery-head {
+  margin-bottom: 28px;
+
+  span {
+    display: inline-block;
+    color: #ff6b00;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    color: #0b2d6f;
+    font-size: 38px;
+    font-weight: 850;
+  }
+}
+
+.bmp-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.bmp-gallery-item {
+  display: block;
+  height: 280px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 55px rgba(10, 32, 80, 0.12);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.45s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.08);
+  }
+}
+
+.bmp-project-empty {
+  padding: 140px 0;
+}
+
+@media (max-width: 991px) {
+  .bmp-project-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .bmp-project-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 575px) {
+  .bmp-project-hero {
+    min-height: 520px;
+  }
+
+  .bmp-project-hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(4, 24, 61, 0.1) 0%,
+      rgba(4, 24, 61, 0.94) 100%
+    );
+  }
+
+  .bmp-project-hero-content {
+    padding-bottom: 55px;
+
+    h1 {
+      font-size: 42px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .bmp-project-layout {
+    padding: 60px 0 80px;
+  }
+
+  .bmp-project-section {
+    padding: 30px 24px;
+
+    h2 {
+      font-size: 28px;
+    }
+  }
+
+  .bmp-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bmp-gallery-item {
+    height: 240px;
+  }
+}
